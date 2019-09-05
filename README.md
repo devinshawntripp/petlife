@@ -1,3 +1,2 @@
 # petlife
-Devin Tripp
-Sarah Richards
+Devin Tripp, Sarah Richards
