@@ -1,0 +1,30 @@
+Problem Statement: 
+
+The motivation behind this project is to help people keep good care of their animals easily. It’s easy to lose track of when you last took your pet to the vet, 
+when you gave them their last pill or treatment, etc. This app would remind pet owners as well as help households where there are multiple owners to a pet by coordinating 
+feeding and letting outside schedule if the pet requires such. 
+
+List of Users:
+
+Users for this application will be pet owners in any kind of home environment. These users want to keep better track of their pet's needs to keep them healthy and make life easier. 
+
+List of Functionalities: 
+- Interactive indicator for if an animal has been fed or not--tracks the time and who fed who.
+- Interactive indicator for if an animal has been let outside--tracks the time and who let who out.
+- Interactive indicator for if an animal has been walked/played with or not--tracks the time and who walked/played with who.
+- Coordinates schedule on a calendar for members of household sharing a pet. You’re able to view other members’ feeding schedules on the calendar. 
+  Your schedule would be made after signing up through the app. If a feeding schedule goes by without anyone signed up, an alert will be sent out. 
+- Sends out push notification if a pet hasn’t been fed or let outside after a specified time period after their feeding or letting out time. 
+- The alerts (or push notifications) are going to be based on the location. For instance, if the pet is in phoenix Arizona, the default alerts (assuming they keep being missed) 
+  for a pet that has been outside too long are going to be much more frequent than a cooler state. The default alerts can be modified by the user, or even turned off. 
+- Reminders for veterinarian visits, treatments, medications.
+- A system that stores all pet and veterinarian information. 
+- A social aspect where you can upload photos under each pet to store and for other members of the household to view/share. 
+- Create/Edit/Add/Remove a pet profile.
+- Set-up/Remove pet/owner “relationship”.
+- Has a private group with a group owner who can add and remove other people. 
+- Has a checklist of tasks that have been completed. 
+
+List of technologies being used:
+Our front-end framework would be Angular JS which includes the languages: HTML, Javascript, CSS
+Our database framework will be MongoDB which uses NoSQL and the backend will be Node JS which is written in Javascript.
