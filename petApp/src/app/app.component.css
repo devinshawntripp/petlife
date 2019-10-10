@@ -1,7 +1,7 @@
   h1{
       font-family: sans-serif
   }
- 
+
   .spacer {
     flex: 1;
   }
@@ -21,6 +21,8 @@
     margin: 0 16px;
   }
 
+
+
   .content {
     display: flex;
     margin: 32px auto;
@@ -28,7 +30,9 @@
     max-width: 960px;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
+
 
   footer {
     margin-top: 8px;
