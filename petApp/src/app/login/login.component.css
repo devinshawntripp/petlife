@@ -1,1 +1,29 @@
 
+.login-content {
+  flex-direction: column;
+  width: 20%;
+  border: 5px;
+  border-style: solid;
+  border-color: #1976d2;
+  border-radius: 5px;
+  padding: 1%;
+  float: right;
+}
+
+
+.temp {
+  width: 100%;
+
+}
+
+.login-button {
+  color: blue;
+  width: 50%;
+  height: 40px;
+  margin-left: 25%;
+}
+
+.login-prompt {
+  text-align: center;
+  align-content: center;
+}
