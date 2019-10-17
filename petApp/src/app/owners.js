@@ -47,3 +47,5 @@ class Owner
 
 
 }
+
+module.exports = Owner; //exporting the owner class
