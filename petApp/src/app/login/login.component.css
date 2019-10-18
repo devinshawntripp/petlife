@@ -1,3 +1,24 @@
+::ng-deep .mat-focused .mat-form-field-label {
+ /*change color of label*/
+ color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+ /*change color of underline*/
+ background-color: white !important;
+}
+
+::ng-deep.mat-form-field-label {
+  color: white !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+/*change color of underline when focused*/
+background-color: white !important;;
+}
+
+
+
 
 .login-content {
   display: flex;
@@ -6,8 +27,13 @@
   /* border-style: solid;
   border-color: #1976d2;
   border-radius: 5px; */
-  margin-top: 25%;
-  padding: 1%;
+  margin-top: 10%;
+  padding: 10%;
+  background-color: grey;
+  opacity: .7;
+  border-radius: 10%;
+  background-blend-mode: difference;
+
 }
 
 img.image {

@@ -15,10 +15,7 @@
   <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="" routerLinkActive="active">PetLife<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+        <a class="nav-link" routerLink="dashboard" routerLinkActive="active">Dashboard<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="owners" routerLinkActive="active">Owners</a>
@@ -40,13 +37,9 @@
 </div>
 
 <div class="content" role="main">
-  <app-login></app-login>
-
+  <router-outlet></router-outlet>
   <!-- Footer -->
   <footer>
   </footer>
 
 </div>
-
-
-<router-outlet></router-outlet>
