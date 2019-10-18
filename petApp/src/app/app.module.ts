@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { OwnersComponent } from './owners/owners/owners.component';
 import { PetsComponent } from './pets/pets/pets.component';
 import { SettingsComponent } from './settings/settings/settings.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SettingsComponent } from './settings/settings/settings.component';
     DashboardComponent,
     OwnersComponent,
     PetsComponent,
-    SettingsComponent
+    SettingsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

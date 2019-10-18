@@ -1,0 +1,55 @@
+.temp {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-label {
+  color: white !important;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+ /*change color of label*/
+ color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+ /*change color of underline*/
+ background-color: white !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+/*change color of underline when focused*/
+background-color: white !important;;
+}
+
+.register-content {
+  display: flex;
+  flex-wrap: wrap;
+  border: 5px;
+  width: 50%;
+  /* border-style: solid;
+  border-color: #1976d2;
+  border-radius: 5px; */
+  margin-top: 2%;
+  margin-left: 25%;
+  background-color: black;
+  padding: 3%;
+  border-radius: 5%;
+  opacity: .7;
+  margin-bottom: 10%;
+}
+
+.temp {
+  padding: 5%;
+
+}
+
+/* .register-button > .register-content{
+  opacity: 1 !important;
+} */
+
+.register-button {
+  /* color: blue; */
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 10%;
+  border-radius: 10%;
+}
