@@ -39,7 +39,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatSlideToggleModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
 
   ],
   providers: [ ],
