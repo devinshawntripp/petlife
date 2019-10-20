@@ -8,18 +8,12 @@
                 <p>
                     {{pet.description}}
                 </p>
-                <p>
-                    Need 1
-                </p>
-                <mat-slide-toggle class="toggle">
-                    Completed
-                </mat-slide-toggle>
-                <p>
-                    Need 2
-                </p>
-                <mat-slide-toggle class="toggle">
-                    Completed
-                </mat-slide-toggle>
+                <li *ngFor="let need of needs">
+                    {{need.description}} {{need.hour}}:{{need.minute}} {{ need.time}}
+                    <mat-slide-toggle class="toggle">
+                            Completed
+                        </mat-slide-toggle>
+                </li>
                 <button mat-button class="edit-button">
                     <mat-icon>edit</mat-icon>
                 </button>
@@ -29,7 +23,7 @@
     </div>
 </div>
 <div>
-        <button mat-raised-button class="add-button">
+        <button mat-raised-button class="add-button" (click)="openDialog()">
             <mat-icon>add</mat-icon>Add Pet
         </button>
         <button mat-raised-button class="delete-button">
