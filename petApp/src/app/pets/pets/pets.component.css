@@ -1,0 +1,36 @@
+.pet-card {
+    width: 200px;
+    background: white;
+    margin-top: 10%;
+    float: left;
+    margin-bottom: 10%;
+    align-self: auto;
+    margin-right: 30px;
+  }
+
+.title {
+    justify-content: center
+}
+
+.toggle {
+    display: flex;
+    margin-block-start: 0%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+
+  .edit-button {
+    margin-left: 60%;
+  }
+  
+  .add-button {
+    margin-top: 0.5%;
+    float: left;
+    background: white;
+  }
+
+  .delete-button {
+    margin-top: 0.5%;
+    float: right;
+    background: white;
+  }
