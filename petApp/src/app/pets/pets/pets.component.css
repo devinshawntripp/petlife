@@ -4,8 +4,8 @@
     margin-top: 10%;
     float: left;
     margin-bottom: 10%;
-    align-self: auto;
-    margin-right: 30px;
+    margin-right: 10px;
+
   }
 
 .title {
@@ -34,4 +34,9 @@
     margin-top: 0.5%;
     float: right;
     background: white;
+  }
+
+  .card-container{
+    display: flex;
+    flex-flow: row wrap;
   }
