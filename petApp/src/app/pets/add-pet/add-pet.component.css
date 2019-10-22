@@ -1,0 +1,9 @@
+.dialog {
+    width: 600px;
+}
+
+.needs{
+    display: flex;
+    margin-right: 10px;
+    
+}

@@ -1,7 +1,19 @@
 <h1 mat-dialog-title>Add Pet</h1>
-
-<div mat-dialog-content>
-
+<div mat-dialog-content class="dialog">
+        <mat-form-field>
+            <input matInput placeholder="Name">
+        </mat-form-field>
+        <div></div>
+        <h1 mat-dialog-title>Needs:</h1>
+        <mat-form-field>
+                <input matInput placeholder="Need">
+        </mat-form-field> 
+        <button mat-button>Add another need</button>
+        <div></div>
+        <mat-form-field>
+                <input datetime-local matInput placeholder="Time">
+        </mat-form-field>
+        <button mat-button>Add another time</button>
 </div>
 
 <div mat-dialog-actions>
