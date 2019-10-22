@@ -17,7 +17,9 @@ import { RegisterComponent } from './register/register.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddPetComponent } from './pets/add-pet/add-pet.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
     OwnersComponent,
     PetsComponent,
     SettingsComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddPetComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +43,14 @@ import {MatIconModule} from '@angular/material/icon';
     MatSlideToggleModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule
 
   ],
   providers: [ ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddPetComponent
+  ]
 })
 export class AppModule { }
