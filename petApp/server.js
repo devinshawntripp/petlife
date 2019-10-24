@@ -86,8 +86,51 @@ app.get("/api/getUser", function(req, res){
     });
 })
 
-
+/*
 app.listen(8080, function(){
 
     console.log("Example app listening on port 8080");
 })
+
+var express = require('express');
+var app = express();
+var mongoose = require('mongoose');
+var bodyparser = require('body-parser');
+var User = require('./models/User')
+
+var db = mongoose.connect('mongodb://localhost:27017/test', function(err, response){
+    if(err) connect.log("error connecting to mongo db");
+    console.log("connection has been added");
+});
+app.set('port', process.env.port || 3000);
+app.use(bodyparser.json());
+
+app.get('/', (req, res) =>{
+    res.send("hello");
+})
+
+app.post('/register', (req, res) =>{ //will be used with registering
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastfirstname;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    var user = new User();
+    user.firstname = firstname;
+    user.lastname = lastname;
+    user.email = email;
+    user.password = password;
+
+    user.save((err, result) =>{
+        if(err){
+            console.log("error adding user in data base");
+            res.sendStatus(500);
+        }
+        res.sendStatus(200);
+    })
+})
+app.listen(app.get('port'), function(err, response){
+    console.log("Server is running on port ", app.get('port'));
+});
+
+*/
