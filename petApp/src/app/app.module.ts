@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddPetComponent } from './pets/add-pet/add-pet.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     SettingsComponent,
     RegisterComponent,
     AddPetComponent,
+    DeletePetComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   providers: [ ],
   bootstrap: [AppComponent],
   entryComponents: [
-    AddPetComponent
+    AddPetComponent,
+    DeletePetComponent
   ]
 })
 export class AppModule { }

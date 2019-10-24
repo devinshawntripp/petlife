@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { Pet } from '../pet/pet.component';
 import { Need } from '../../needs/needs.component';
-import { Time } from '@angular/common';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddPetComponent } from '../add-pet/add-pet.component'
+import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.component'
 
 export interface DialogData {
   name: string;
@@ -40,7 +40,20 @@ export class PetsComponent{
           // User clicked 'Cancel' or clicked outside the dialog
         }
       });
-}
+  }
+
+  openSecondDialog(){
+    let dialog = this.dialog.open(DeletePetComponent);
+
+    dialog.afterClosed()
+      .subscribe(selection => {
+        if (this.name) {
+          this.name = name;
+        } else {
+          // User clicked 'Cancel' or clicked outside the dialog
+        }
+      });
+  }
   
 }
 

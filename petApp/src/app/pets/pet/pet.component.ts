@@ -1,5 +1,5 @@
 
-import { Need } from '../../needs/needs.component'
+import { Need } from '../../needs/need.component'
 export class Pet {
 
   constructor(
