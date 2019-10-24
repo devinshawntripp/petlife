@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -86,11 +87,12 @@ app.get("/api/getUser", function(req, res){
     });
 })
 
-/*
+
 app.listen(8080, function(){
 
     console.log("Example app listening on port 8080");
 })
+*/
 
 var express = require('express');
 var app = express();
@@ -113,12 +115,14 @@ app.post('/register', (req, res) =>{ //will be used with registering
     var firstname = req.body.firstname;
     var lastname = req.body.lastfirstname;
     var email = req.body.email;
+    var phonenumber = req.body.phonenumber;
     var password = req.body.password;
 
     var user = new User();
     user.firstname = firstname;
     user.lastname = lastname;
     user.email = email;
+    user.phonenumber = phonenumber;
     user.password = password;
 
     user.save((err, result) =>{
@@ -132,5 +136,3 @@ app.post('/register', (req, res) =>{ //will be used with registering
 app.listen(app.get('port'), function(err, response){
     console.log("Server is running on port ", app.get('port'));
 });
-
-*/
