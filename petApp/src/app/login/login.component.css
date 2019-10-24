@@ -67,13 +67,14 @@ img.image {
 }
 
 .login-button {
-  color: blue;
-  width: 50%;
+  /* color: blue; */
+  width: 45%;
+  margin-right: 10%;
 }
 
 .register-button {
   /* color: blue; */
-  width: 50%;
+  width: 45%;
 }
 
 .login-prompt {

@@ -1,42 +1,46 @@
 
+<form id="formData" #userData="ngForm" (ngSubmit)="registerUser(userData.value)">
 <div class="register-content">
+    
   <mat-form-field class="temp">
-      <input matInput placeholder="First Name:">
+      <input matInput placeholder="First Name:" name="firstname" type="text" ngModel>
   </mat-form-field>
 
   <br>
 
   <mat-form-field class="temp">
-      <input matInput placeholder="Last Name:">
+      <input matInput placeholder="Last Name:" name="lastname" type="text" ngModel>
   </mat-form-field>
 
   <br>
 
   <mat-form-field class="temp">
-      <input matInput placeholder="Username:">
-  </mat-form-field>
-
-
-  <br>
-
-  <mat-form-field class="temp">
-      <input matInput placeholder="email:">
+      <input matInput placeholder="Username:" name="username" type="text" ngModel>
   </mat-form-field>
 
 
   <br>
 
   <mat-form-field class="temp">
-      <input matInput placeholder="Password:" type="password">
+      <input matInput placeholder="Phone Number:" name="phonenumber" type="text" ngModel>
   </mat-form-field>
 
 
   <br>
 
   <mat-form-field class="temp">
-    <input matInput placeholder="Confirm Password:" type="password">
+      <input matInput placeholder="Password:" >
+  </mat-form-field>
+
+
+  <br>
+
+  <mat-form-field class="temp">
+    <input matInput placeholder="Confirm Password:" type="password" name="password" ngModel>
   </mat-form-field>
 
 
   <button routerLink="/dash" mat-button class="register-button">Register</button>
+ 
 </div>
+</form>
