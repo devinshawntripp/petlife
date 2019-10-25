@@ -14,14 +14,13 @@
 
 ::ng-deep input.mat-input-element {
   color: white !important;
-  background-color: transparent !important;
+  /* background-color: white !important; */
 }
 
 ::ng-deep .mat-button {
   background-color: blue !important;
   color: white;
 }
-
 
 
 

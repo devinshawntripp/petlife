@@ -1,42 +1,52 @@
 
 <div class="register-content">
-  <mat-form-field class="temp">
-      <input matInput placeholder="First Name:">
-  </mat-form-field>
+  <form [formGroup]="registerGroup" (ngSubmit)="onSubmit(registerGroup.value)">
 
-  <br>
-
-  <mat-form-field class="temp">
-      <input matInput placeholder="Last Name:">
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field class="temp">
-      <input matInput placeholder="Username:">
-  </mat-form-field>
+    <ng-container>
+      <mat-form-field class="temp my-form-field">
+        <div >
+          <input matInput placeholder="First Name:" formControlName="lastName">
+        </div>
+      </mat-form-field>
+    </ng-container>
 
 
-  <br>
 
-  <mat-form-field class="temp">
-      <input matInput placeholder="Phone Number:">
-  </mat-form-field>
+    <br>
 
+    <mat-form-field class="temp">
+        <input matInput placeholder="Last Name:" formControlName="lastName">
+    </mat-form-field>
 
-  <br>
+    <br>
 
-  <mat-form-field class="temp">
-      <input matInput placeholder="Password:" type="password">
-  </mat-form-field>
-
-
-  <br>
-
-  <mat-form-field class="temp">
-    <input matInput placeholder="Confirm Password:" type="password">
-  </mat-form-field>
+    <mat-form-field class="temp">
+        <input matInput placeholder="Username:" formControlName="userName">
+    </mat-form-field>
 
 
-  <button routerLink="/dash" mat-button class="register-button">Register</button>
-</div>
+    <br>
+
+    <mat-form-field class="temp">
+        <input matInput placeholder="Phone Number:" formControlName="phoneNum">
+    </mat-form-field>
+
+
+    <br>
+
+    <mat-form-field class="temp">
+        <input matInput placeholder="Password:" type="password" formControlName="password">
+    </mat-form-field>
+
+
+    <br>
+
+    <mat-form-field class="temp">
+      <input matInput placeholder="Confirm Password:" type="password">
+    </mat-form-field>
+
+
+    <button mat-raised-button class="register-button" type="submit">Register</button>
+
+  </form>
+  </div>
