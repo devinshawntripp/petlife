@@ -12,5 +12,28 @@
 </head>
 <body>
   <app-root></app-root>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBpHJPpT0ktmtRkqshrsJ2BO-2capgawwo",
+    authDomain: "petlife-cf0d4.firebaseapp.com",
+    databaseURL: "https://petlife-cf0d4.firebaseio.com",
+    projectId: "petlife-cf0d4",
+    storageBucket: "petlife-cf0d4.appspot.com",
+    messagingSenderId: "817977284710",
+    appId: "1:817977284710:web:88f07caa81a16df916b5a7",
+    measurementId: "G-9YB838ZXLN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 </html>
