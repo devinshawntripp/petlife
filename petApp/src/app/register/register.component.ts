@@ -37,9 +37,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
-<<<<<<< HEAD
-
-    this.registerGroup = this.fb.group({
+    this.registerGroup = this.fb.group ({
       firstName: [''],
       lastName: [''],
       userName: [''],
@@ -47,9 +45,7 @@ export class RegisterComponent implements OnInit {
       phoneNum: ['']
 
     });
-=======
-    
->>>>>>> 113296345b5bc00b276abd8d5840684f56968fbe
+
   }
 
 }
