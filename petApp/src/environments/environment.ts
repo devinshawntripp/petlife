@@ -7,14 +7,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBpHJPpT0ktmtRkqshrsJ2BO-2capgawwo",
-    authDomain: "petlife-cf0d4.firebaseapp.com",
-    databaseURL: "https://petlife-cf0d4.firebaseio.com",
-    projectId: "petlife-cf0d4",
-    storageBucket: "petlife-cf0d4.appspot.com",
-    messagingSenderId: "817977284710",
-    appId: "1:817977284710:web:88f07caa81a16df916b5a7",
-    measurementId: "G-9YB838ZXLN"
+    apiKey: "AIzaSyAbnhDSH8i_RgVJgebFWMa0cq1k6gKXaSo",
+    authDomain: "petlife-50984.firebaseapp.com",
+    databaseURL: "https://petlife-50984.firebaseio.com",
+    projectId: "petlife-50984",
+    storageBucket: "petlife-50984.appspot.com",
+    messagingSenderId: "720037382456",
+    appId: "1:720037382456:web:135998ed6de389083b59cd"
   }
 };
 
