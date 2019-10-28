@@ -1,26 +1,33 @@
 <h1 mat-dialog-title>Add Pet</h1>
 <div mat-dialog-content class="dialog">
-        <mat-form-field>
-            <input matInput placeholder="Name">
-        </mat-form-field>
-        <div></div>
-        <h1 mat-dialog-title>Needs:</h1>
-        <mat-form-field>
-                <input matInput placeholder="Need">
-        </mat-form-field> 
-        <button mat-button>Add another need</button>
-        <div></div>
-        <mat-form-field>
-                <input datetime-local matInput placeholder="Time">
-        </mat-form-field>
-        <button mat-button>Add another time</button>
+  <form [formGroup]="addPetGroup" (ngSubmit)="onSubmit(addPetGroup.value)">
+    <mat-form-field class="form-field">
+      <p>Name:</p><input matInput formControlName="name">
+    </mat-form-field>
+    <div></div>
+    <mat-form-field class="form-field">
+      <p>Need 1:</p><input matInput formControlName="need1">
+    </mat-form-field>
+    <div></div>
+    <mat-form-field class="form-field">
+      <p>Time of Need 1:</p><input matInput formControlName="time1">
+    </mat-form-field>
+    <div></div>
+    <mat-form-field class="form-field">
+      <p>Need 2:</p><input matInput formControlName="need2">
+    </mat-form-field>
+    <div></div>
+    <mat-form-field class="form-field">
+      <p>Time of Need 2:</p><input matInput formControlName="time2">
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button type="submit" color="primary">
+        Submit
+      </button>
+      <button mat-button (click)="dialogRef.close()">
+        Cancel
+      </button>
+    </div>
+  </form>
 </div>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="confirmSelection()" color="primary">
-    Submit
-  </button>
-  <button mat-button (click)="dialogRef.close()">
-    Cancel
-  </button>
-</div>
