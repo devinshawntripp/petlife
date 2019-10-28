@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registerGroup: FormGroup;
+  some: number;
 
 
   constructor(

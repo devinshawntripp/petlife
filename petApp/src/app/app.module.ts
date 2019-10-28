@@ -26,7 +26,8 @@ import { environment } from '../environments/environment';
 import { FirebaseService } from './services/firebase.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.component'
+import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.comp
     MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
  	  AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireAuthModule
 
   ],
   providers: [ FirebaseService ],

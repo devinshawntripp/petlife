@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -21,6 +19,12 @@ export class FirebaseService {
       password: value.password
     });
   }
+
+
+  // createHousehold(value){
+  //
+  //
+  // }
 
 
 }
