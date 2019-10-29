@@ -30,6 +30,7 @@ export class AddPetComponent implements OnInit{
           this.router.navigate(['/pets']);
         }
       )
+      this.dialogRef.close(this.name);
     }
 
   confirmSelection() {
