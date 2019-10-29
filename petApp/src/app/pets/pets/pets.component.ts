@@ -4,6 +4,7 @@ import { Need } from '../../needs/needs.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddPetComponent } from '../add-pet/add-pet.component'
 import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.component'
+import { EditPetComponent } from '../edit-pet/edit-pet.component'
 
 export interface DialogData {
   name: string;
@@ -44,6 +45,19 @@ export class PetsComponent{
 
   openSecondDialog(){
     let dialog = this.dialog.open(DeletePetComponent);
+
+    dialog.afterClosed()
+      .subscribe(selection => {
+        if (this.name) {
+          this.name = name;
+        } else {
+          // User clicked 'Cancel' or clicked outside the dialog
+        }
+      });
+  }
+
+  openEditDialog(){
+    let dialog = this.dialog.open(EditPetComponent);
 
     dialog.afterClosed()
       .subscribe(selection => {

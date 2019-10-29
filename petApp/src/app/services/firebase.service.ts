@@ -25,6 +25,7 @@ export class FirebaseService {
   addPet(value){
     return this.db.collection('pets').add({
       name: value.name,
+      nameToSearch: value.name.toLowerCase(),
       need1: value.need1,
       need2: value.need2,
       time1: value.time1,
@@ -32,6 +33,10 @@ export class FirebaseService {
     });
   }
 
+  editPet(userKey, value){
+    value.nameToSearch = value.name.toLowerCase();
+    return this.db.collection('users').doc(userKey).set(value);
+  }
 
   // createHousehold(value){
   //

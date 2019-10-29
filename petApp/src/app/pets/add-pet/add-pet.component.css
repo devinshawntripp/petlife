@@ -8,6 +8,18 @@
     
 }
 
+.form-field{
+    padding: 3%;
+}
+
+.buttons{
+    padding-left: 30%;
+}
+
+.button{
+    margin-left: 5%;
+}
+
 ::ng-deep input.mat-input-element {
     color: black !important;
     background-color: transparent !important;

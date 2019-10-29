@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>Add Pet</h1>
+<h1 mat-dialog-title>Edit Pet</h1>
 <div mat-dialog-content class="dialog">
-  <form [formGroup]="addPetGroup" (ngSubmit)="onSubmit(addPetGroup.value)">
+  <form [formGroup]="editPetGroup" (ngSubmit)="onSubmit(editPetGroup.value)">
       <mat-form-field class="form-field">
         <p>Name:</p><input matInput formControlName="name">
       </mat-form-field>
