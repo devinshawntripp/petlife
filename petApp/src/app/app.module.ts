@@ -28,6 +28,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AngularFireAuthModule
 
   ],
-  providers: [ FirebaseService ],
+  providers: [ FirebaseService, AuthService ],
   bootstrap: [AppComponent],
   entryComponents: [
     AddPetComponent,

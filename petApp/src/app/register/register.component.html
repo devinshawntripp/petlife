@@ -1,6 +1,6 @@
 
 <div class="register-content">
-  <form [formGroup]="registerGroup" (ngSubmit)="onSubmit(registerGroup.value)">
+  <form [formGroup]="registerGroup" (ngSubmit)="tryRegister(registerGroup.value)">
 
       <mat-form-field class="temp my-form-field">
           <input matInput placeholder="First Name:" formControlName="firstName">
@@ -21,6 +21,10 @@
 
     <mat-form-field class="temp">
         <input matInput placeholder="Phone Number:" formControlName="phoneNum">
+    </mat-form-field>
+
+    <mat-form-field class="temp">
+        <input matInput placeholder="Email:" formControlName="email">
     </mat-form-field>
 
 
