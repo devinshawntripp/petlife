@@ -32,7 +32,6 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { EditPetComponent } from './pets/edit-pet/edit-pet.component';
 
 import { AuthService } from './services/auth.service';
-import { PetAvatarComponent } from './pets/pet-avatar/pet-avatar.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { PetAvatarComponent } from './pets/pet-avatar/pet-avatar.component';
     AddPetComponent,
     DeletePetComponent,
     EditPetComponent,
-    PetAvatarComponent
   ],
   imports: [
     BrowserModule,
