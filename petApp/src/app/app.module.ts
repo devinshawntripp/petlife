@@ -31,6 +31,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { EditPetComponent } from './pets/edit-pet/edit-pet.component';
 
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import { EditPetComponent } from './pets/edit-pet/edit-pet.component';
     ScrollingModule
 
   ],
-  providers: [ FirebaseService ],
+  providers: [ FirebaseService, AuthService ],
   bootstrap: [AppComponent],
   entryComponents: [
     AddPetComponent,

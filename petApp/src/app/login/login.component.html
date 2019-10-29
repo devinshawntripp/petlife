@@ -4,20 +4,23 @@
 <div class="login-content">
   <!-- <h1 class="login-prompt">Login</h1> -->
   <!-- <h2>{{login.userName | uppercase}}</h2> -->
-  <mat-form-field class="temp">
-      <input matInput placeholder="Username">
-  </mat-form-field>
+
+  <form [formGroup]="loginForm">
+    <mat-form-field class="temp">
+        <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
 
 
-  <br>
+    <br>
 
-  <mat-form-field class="temp">
-    <input matInput placeholder="Password">
-  </mat-form-field>
+    <mat-form-field class="temp">
+      <input matInput placeholder="Password" type="password">
+    </mat-form-field>
+  </form>
 
 
 
-  <button routerLink="/dash" mat-button class="login-button">Login</button>
+  <button type="submit" (click)="tryLogin(loginForm.value)" routerLink="/dash" mat-button class="login-button">Login</button>
   <button  routerLink="/register" mat-button class="register-button">Register</button>
 </div>
 </div>

@@ -5,6 +5,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,25 +17,43 @@ import { FormsModule } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registerGroup: FormGroup;
-  some: number;
+  errorMessage: string = '';
+  successMessage: string = '';
+
 
 
   constructor(
-    private fb: FormBuilder,
+    public authService: AuthService,
     private router: Router,
+    private fb: FormBuilder,
     public firebaseService: FirebaseService
   ) { }
 
 
 
-  onSubmit(value){
-	this.firebaseService.createUser(value)
-	.then(
-	  res => {
-	    this.router.navigate(['/dash']);
-	  }
-	)
-}
+//   onSubmit(value){
+// 	this.firebaseService.createUser(value)
+// 	.then(
+// 	  res => {
+// 	    this.router.navigate(['/dash']);
+// 	  }
+// 	)
+// }
+
+tryRegister(value){
+     this.authService.doRegister(value)
+     .then(res => {
+       console.log(res);
+       // this.firebaseService.createUser(value).then( res => { this.router.navigate(['/dash']); })
+       this.errorMessage = "";
+       this.successMessage = "Your account has been created";
+       this.router.navigate(['/dash']);
+     }, err => {
+       console.log(err);
+       this.errorMessage = err.message;
+       this.successMessage = "";
+     })
+   }
 
   ngOnInit() {
 
@@ -43,7 +62,8 @@ export class RegisterComponent implements OnInit {
       lastName: [''],
       userName: [''],
       password: [''],
-      phoneNum: ['']
+      phoneNum: [''],
+      email: ['']
 
     });
 
