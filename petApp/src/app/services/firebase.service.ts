@@ -27,6 +27,25 @@ export class FirebaseService {
     //   });
     // }
 
+    return this.db.collection('users').add({
+      firstName: value.firstName,
+      nameToSearch: value.firstName.toLowerCase(),
+      lastName: value.lastName,
+      phoneNum: parseInt(value.phoneNum),
+      userName: value.userName,
+      password: value.password
+    });
+
+  }
+
+  addPet(value){
+    return this.db.collection('pets').add({
+      name: value.name,
+      need1: value.need1,
+      need2: value.need2,
+      time1: value.time1,
+      time2: value.time2
+    });
   }
 
 
