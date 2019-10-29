@@ -5,7 +5,7 @@
   <!-- <h1 class="login-prompt">Login</h1> -->
   <!-- <h2>{{login.userName | uppercase}}</h2> -->
 
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" class="temp">
     <mat-form-field class="temp">
         <input matInput placeholder="Email" formControlName="email">
     </mat-form-field>
@@ -14,7 +14,7 @@
     <br>
 
     <mat-form-field class="temp">
-      <input matInput placeholder="Password" type="password">
+      <input matInput placeholder="Password" type="password" formControlName="password">
     </mat-form-field>
   </form>
 
