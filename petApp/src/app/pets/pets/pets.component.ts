@@ -23,6 +23,7 @@ export class PetsComponent implements OnInit{
   items: Array<any>;
   name: string; 
   needs: Array<any>;
+  completed: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -104,10 +105,16 @@ export class PetsComponent implements OnInit{
   updateCompletion(object: any){
     if(object.completed === true){
       console.log(object)
-      object.completed = false;
+      this.completed = false;
     }else{
-      object.completed = true;
+      this.completed = true;
     }
+    this.firebaseService.updateNeed(object.id, this.completed)
+    .then(
+      res => {
+        this.router.navigate(['/pets']);
+      }
+    )
   }
   
 }
