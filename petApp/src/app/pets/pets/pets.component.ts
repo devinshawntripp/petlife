@@ -7,6 +7,7 @@ import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.componen
 import { EditPetComponent } from '../edit-pet/edit-pet.component'
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { AddNeedsComponent } from '../add-needs/add-needs.component'
 
 export interface DialogData {
   name: string;
@@ -76,6 +77,19 @@ export class PetsComponent implements OnInit{
 
   openEditDialog(){
     let dialog = this.dialog.open(EditPetComponent);
+
+    dialog.afterClosed()
+      .subscribe(selection => {
+        if (this.name) {
+          this.name = name;
+        } else {
+          // User clicked 'Cancel' or clicked outside the dialog
+        }
+      });
+  }
+
+  openAddNeedDialog(){
+    let dialog = this.dialog.open(AddNeedsComponent);
 
     dialog.afterClosed()
       .subscribe(selection => {

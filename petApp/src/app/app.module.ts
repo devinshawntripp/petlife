@@ -32,6 +32,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { EditPetComponent } from './pets/edit-pet/edit-pet.component';
 
 import { AuthService } from './services/auth.service';
+import { AddNeedsComponent } from './pets/add-needs/add-needs.component';
+import { MatNativeDateModule } from '@angular/material'
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { AuthService } from './services/auth.service';
     AddPetComponent,
     DeletePetComponent,
     EditPetComponent,
+    AddNeedsComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ import { AuthService } from './services/auth.service';
  	  AngularFirestoreModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    ScrollingModule
+    ScrollingModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
   ],
   providers: [ FirebaseService, AuthService ],
@@ -71,7 +77,8 @@ import { AuthService } from './services/auth.service';
   entryComponents: [
     AddPetComponent,
     DeletePetComponent,
-    EditPetComponent
+    EditPetComponent,
+    AddNeedsComponent
   ]
 })
 export class AppModule { }
