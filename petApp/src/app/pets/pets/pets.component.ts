@@ -21,16 +21,8 @@ export interface DialogData {
 export class PetsComponent implements OnInit{
 
   items: Array<any>;
-  name: string;
-
-  needs = [
-    new Need(1, 'Walk', false, 9, 15, 'am'),
-    new Need(2, 'Feed', false, 9, 15,'am')
-  ]
-  pets = [
-    new Pet(1, 'ScoobyDoo', 'The coolest dog around', this.needs),
-    new Pet(2, 'ScrappyDoo', 'The second coolest dog around', this.needs)
-  ]
+  name: string; 
+  needs: Array<any>;
 
   constructor(
     public dialog: MatDialog,
@@ -40,12 +32,20 @@ export class PetsComponent implements OnInit{
   
   ngOnInit() {
     this.getData();
+    this.getNeeds();
    }
 
    getData(){
     this.firebaseService.getPets()
     .subscribe(result => {
       this.items = result;
+    })
+   }
+
+   getNeeds(){
+    this.firebaseService.getNeeds()
+    .subscribe(result => {
+      this.needs = result;
     })
    }
 
@@ -99,6 +99,15 @@ export class PetsComponent implements OnInit{
           // User clicked 'Cancel' or clicked outside the dialog
         }
       });
+  }
+
+  updateCompletion(object: any){
+    if(object.completed === true){
+      console.log(object)
+      object.completed = false;
+    }else{
+      object.completed = true;
+    }
   }
   
 }

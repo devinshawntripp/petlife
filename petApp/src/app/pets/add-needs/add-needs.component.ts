@@ -41,7 +41,8 @@ export class AddNeedsComponent implements OnInit {
       what: [''],
       time: [''],
       day: [''],
-      pet: ['']
+      pet: [''],
+      completed: ['']
     });
   }
 

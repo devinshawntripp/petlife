@@ -43,7 +43,8 @@ export class FirebaseService {
       what: value.what,
       time: value.time,
       day: value.day,
-      pet: value.pet
+      pet: value.pet,
+      completed: false
     })
   }
 
