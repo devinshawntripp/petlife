@@ -58,6 +58,10 @@ export class FirebaseService {
     return this.db.collection('users').doc(userKey).set(value);
   }
 
+  getAvatars(){
+    return this.db.collection('/avatar').valueChanges()
+  }
+
   // createHousehold(value){
   //
   //
