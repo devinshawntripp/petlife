@@ -1,10 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Pet } from '../pet/pet.component';
 import { Need } from '../../needs/needs.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddPetComponent } from '../add-pet/add-pet.component'
 import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.component'
 import { EditPetComponent } from '../edit-pet/edit-pet.component'
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { Router } from '@angular/router';
 
 export interface DialogData {
   name: string;
@@ -15,8 +17,9 @@ export interface DialogData {
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.css'],
 })
-export class PetsComponent{
+export class PetsComponent implements OnInit{
 
+  items: Array<any>;
   name: string;
 
   needs = [
@@ -28,7 +31,22 @@ export class PetsComponent{
     new Pet(2, 'ScrappyDoo', 'The second coolest dog around', this.needs)
   ]
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public firebaseService: FirebaseService,
+    private router: Router
+  ) { }
+  
+  ngOnInit() {
+    this.getData();
+   }
+
+   getData(){
+    this.firebaseService.getPets()
+    .subscribe(result => {
+      this.items = result;
+    })
+   }
 
   openDialog() {
     let dialog = this.dialog.open(AddPetComponent);

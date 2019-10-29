@@ -49,6 +49,10 @@ export class FirebaseService {
     });
   }
 
+  getPets(){
+    return this.db.collection('pets').snapshotChanges();
+  }
+
   editPet(userKey, value){
     value.nameToSearch = value.name.toLowerCase();
     return this.db.collection('users').doc(userKey).set(value);

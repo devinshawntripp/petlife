@@ -22,12 +22,14 @@
 
   .edit-button {
     margin-left: 60%;
+    size: 20%;
   }
   
   .add-button {
     margin-top: 0.5%;
     float: left;
     background: white;
+    margin-right: 30px;
   }
 
   .delete-button {
