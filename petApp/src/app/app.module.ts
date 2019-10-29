@@ -44,7 +44,7 @@ import { AuthService } from './services/auth.service';
     RegisterComponent,
     AddPetComponent,
     DeletePetComponent,
-    EditPetComponent
+    EditPetComponent,
   ],
   imports: [
     BrowserModule,

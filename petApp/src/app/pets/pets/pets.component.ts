@@ -35,7 +35,7 @@ export class PetsComponent implements OnInit{
     public dialog: MatDialog,
     public firebaseService: FirebaseService,
     private router: Router
-  ) { }
+    ) { }
   
   ngOnInit() {
     this.getData();
