@@ -41,11 +41,6 @@ export class AddPetComponent implements OnInit{
 
     this.addPetGroup = this.fb.group ({
       name: [''],
-      need1: [''],
-      need2: [''],
-      time1: [''],
-      time2: ['']
-
     });
 
   }
