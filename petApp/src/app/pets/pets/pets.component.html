@@ -9,7 +9,7 @@
                     <div *ngFor="let need of needs">
                         <li *ngIf="need.payload.doc.data().pet === item.payload.doc.data().name">
                             {{need.payload.doc.data().what}} {{need.payload.doc.data().time}} 
-                            <input type="checkbox" [checked]="need.payload.doc.data().completed" (change)="updateCompletion(need.payload.doc.data())"/>
+                            <input type="checkbox" [checked]="need.payload.doc.data().completed" (change)="updateCompletion(need)"/>
                         </li>
                     </div>
                     <div class="buttons">
