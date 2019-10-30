@@ -1,0 +1,85 @@
+::ng-deep .mat-form-field-label {
+	color: white !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+color: white !important;
+}
+
+::ng-deep.mat-form-field-underline {
+background-color: white !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+background-color: white !important;
+}
+
+::ng-deep input.mat-input-element {
+	color: white !important;
+	background-color: transparent !important;
+}
+
+/** Overrides underline color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-underline,
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-ripple,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-underline,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-ripple {
+	background-color: white;
+	width: 100%;
+}
+
+/** Overrides label color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-form-field-label,
+.my-form-field.mat-form-field-appearance-legacy.mat-focused
+	.mat-form-field-label { 
+	color: white;
+	width: 100%;
+}
+
+/** Overrides caret & text color **/
+.my-form-field.mat-form-field-appearance-legacy .mat-input-element {
+	caret-color: white;
+	color: white;
+	width: 100%;
+}
+
+.form-full-width {
+	min-width: 150%;
+	max-width: 500px;
+	width: 100%;
+}
+
+.ng-star-inserted {
+	width: 100%;
+}
+
+.temp {
+	padding: 5%;
+	width: 100% !important;
+	color: white !important;
+}
+
+.settings-content {
+	display: flex !important;
+	color: white;
+	border: 5px;
+	width: 100%;
+	justify-content: center;
+	margin-top: 2%;
+	background-color: black;
+	border-radius: 5%;
+}
+
+.settings-button {
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 10%;
+	border-radius: 10%;
+}
+
+::placeholder {
+
+	color: white;
+}
