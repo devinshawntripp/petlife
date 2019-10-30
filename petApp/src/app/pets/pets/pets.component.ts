@@ -109,7 +109,7 @@ export class PetsComponent implements OnInit{
     }else{
       this.completed = true;
     }
-    this.firebaseService.updateNeed(object.id, this.completed)
+    this.firebaseService.updateNeed(object, this.completed)
     .then(
       res => {
         this.router.navigate(['/pets']);

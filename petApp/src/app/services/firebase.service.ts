@@ -69,9 +69,11 @@ export class FirebaseService {
     return this.db.collection('users').doc(userKey).set(value);
   }
 
-  updateNeed(userKey, value){
-    value.completed = value
-    return this.db.collection('pets').doc(userKey).set(value);
+  updateNeed(value, completed){
+    return this.db
+       .collection("Needs")
+       .doc(value.payload.doc.id)
+       .set({ completed: completed }, { merge: true });
   }
 
   // createHousehold(value){
