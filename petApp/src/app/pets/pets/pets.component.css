@@ -21,8 +21,9 @@
   }
 
   .edit-button {
-    margin-left: 60%;
-    size: 20%;
+    margin-left: 15%;
+    min-width: 10%;
+    margin-top: 10%;
   }
   
   .add-button {
@@ -41,4 +42,5 @@
   .card-container{
     display: flex;
     flex-flow: row wrap;
+    
   }

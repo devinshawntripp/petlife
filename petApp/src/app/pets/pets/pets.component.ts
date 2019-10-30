@@ -7,6 +7,7 @@ import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.componen
 import { EditPetComponent } from '../edit-pet/edit-pet.component'
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { AddNeedsComponent } from '../add-needs/add-needs.component'
 
 export interface DialogData {
   name: string;
@@ -20,31 +21,32 @@ export interface DialogData {
 export class PetsComponent implements OnInit{
 
   items: Array<any>;
-  name: string;
-
-  needs = [
-    new Need(1, 'Walk', false, 9, 15, 'am'),
-    new Need(2, 'Feed', false, 9, 15,'am')
-  ]
-  pets = [
-    new Pet(1, 'ScoobyDoo', 'The coolest dog around', this.needs),
-    new Pet(2, 'ScrappyDoo', 'The second coolest dog around', this.needs)
-  ]
+  name: string; 
+  needs: Array<any>;
+  completed: boolean;
 
   constructor(
     public dialog: MatDialog,
     public firebaseService: FirebaseService,
     private router: Router
-  ) { }
+    ) { }
   
   ngOnInit() {
     this.getData();
+    this.getNeeds();
    }
 
    getData(){
     this.firebaseService.getPets()
     .subscribe(result => {
       this.items = result;
+    })
+   }
+
+   getNeeds(){
+    this.firebaseService.getNeeds()
+    .subscribe(result => {
+      this.needs = result;
     })
    }
 
@@ -85,6 +87,34 @@ export class PetsComponent implements OnInit{
           // User clicked 'Cancel' or clicked outside the dialog
         }
       });
+  }
+
+  openAddNeedDialog(){
+    let dialog = this.dialog.open(AddNeedsComponent);
+
+    dialog.afterClosed()
+      .subscribe(selection => {
+        if (this.name) {
+          this.name = name;
+        } else {
+          // User clicked 'Cancel' or clicked outside the dialog
+        }
+      });
+  }
+
+  updateCompletion(object: any){
+    if(object.completed === true){
+      console.log(object)
+      this.completed = false;
+    }else{
+      this.completed = true;
+    }
+    this.firebaseService.updateNeed(object, this.completed)
+    .then(
+      res => {
+        this.router.navigate(['/pets']);
+      }
+    )
   }
   
 }

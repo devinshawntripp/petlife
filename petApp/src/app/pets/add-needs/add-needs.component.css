@@ -22,24 +22,3 @@
    background-color: black !important;;
    }
    
-   .dialog {
-    width: 600px;
-}
-
-.needs{
-    display: flex;
-    margin-right: 10px;
-    
-}
-
-.form-field{
-    padding: 3%;
-}
-
-.buttons{
-    padding-left: 30%;
-}
-
-.button{
-    margin-left: 5%;
-}

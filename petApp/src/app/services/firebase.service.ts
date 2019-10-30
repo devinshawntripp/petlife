@@ -38,14 +38,25 @@ export class FirebaseService {
 
   }
 
+  createNeed(value){
+    return this.db.collection('Needs').add({
+      what: value.what,
+      nameToSearch: value.what.toLowerCase(),
+      time: value.time,
+      day: value.day,
+      pet: value.pet,
+      completed: false
+    })
+  }
+
+  getNeeds(){
+    return this.db.collection('Needs').snapshotChanges();
+  }
+
   addPet(value){
     return this.db.collection('pets').add({
       name: value.name,
       nameToSearch: value.name.toLowerCase(),
-      need1: value.need1,
-      need2: value.need2,
-      time1: value.time1,
-      time2: value.time2
     });
   }
 
@@ -56,6 +67,13 @@ export class FirebaseService {
   editPet(userKey, value){
     value.nameToSearch = value.name.toLowerCase();
     return this.db.collection('users').doc(userKey).set(value);
+  }
+
+  updateNeed(value, completed){
+    return this.db
+       .collection("Needs")
+       .doc(value.payload.doc.id)
+       .set({ completed: completed }, { merge: true });
   }
 
   // createHousehold(value){
