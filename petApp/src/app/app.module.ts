@@ -30,7 +30,6 @@ import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.comp
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { EditPetComponent } from './pets/edit-pet/edit-pet.component';
-
 import { AuthService } from './services/auth.service';
 
 @NgModule({
