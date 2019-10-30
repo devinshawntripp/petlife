@@ -54,7 +54,9 @@
 
   }
 
-
+  .logout-button {
+    float: right;
+  }
 
 
 

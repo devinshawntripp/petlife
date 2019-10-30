@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,30 @@ export class AppComponent {
   title = 'petApp';
 
   navbarOpen = false;
+  errorMessage = '';
+
+
+  constructor(
+    public authService: AuthService,
+    private router: Router
+  ) {
+
+
+  }
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+
+
+  tryLogout(){
+    this.authService.doLogout()
+    .then(res => {
+      this.router.navigate(['/login']);
+      console.log("user successfully logged out");
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+    })
   }
 }
