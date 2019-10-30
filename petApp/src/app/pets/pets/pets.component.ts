@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Pet } from '../pet/pet.component';
-import { Need } from '../../needs/needs.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddPetComponent } from '../add-pet/add-pet.component'
 import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.component'
