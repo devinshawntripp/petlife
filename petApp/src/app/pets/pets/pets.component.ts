@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Pet } from '../pet/pet.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddPetComponent } from '../add-pet/add-pet.component'
 import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.component'
@@ -12,6 +11,7 @@ export interface DialogData {
   name: string;
 }
 
+
 @Component({
   selector: 'app-pets',
   templateUrl: './pets.component.html',
@@ -20,7 +20,7 @@ export interface DialogData {
 export class PetsComponent implements OnInit{
 
   items: Array<any>;
-  name: string; 
+  name: string;
   needs: Array<any>;
   completed: boolean;
 
@@ -29,7 +29,7 @@ export class PetsComponent implements OnInit{
     public firebaseService: FirebaseService,
     private router: Router
     ) { }
-  
+
   ngOnInit() {
     this.getData();
     this.getNeeds();
@@ -115,7 +115,5 @@ export class PetsComponent implements OnInit{
       }
     )
   }
-  
+
 }
-
-

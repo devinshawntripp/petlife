@@ -8,7 +8,7 @@
                 <mat-card-content>
                     <div *ngFor="let need of needs">
                         <li *ngIf="need.payload.doc.data().pet === item.payload.doc.data().name">
-                            {{need.payload.doc.data().what}} {{need.payload.doc.data().time}} 
+                            {{need.payload.doc.data().what}} {{need.payload.doc.data().time}}
                             <input type="checkbox" [checked]="need.payload.doc.data().completed" (change)="updateCompletion(need)"/>
                         </li>
                     </div>
@@ -16,6 +16,7 @@
                         <button mat-button class="edit-button" (click)="openAddNeedDialog()">
                             <mat-icon>add</mat-icon>Add Need
                         </button>
+                        
                     </div>
                 </mat-card-content>
             </mat-card>
