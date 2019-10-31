@@ -6,6 +6,11 @@
                     <mat-card-title class="title">{{pet.payload.doc.data().name}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
+                    <div *ngFor="let user of items">
+                        <li>
+                            {{user.payload.doc.data().firstName}}
+                        </li>
+                    </div>
                 </mat-card-content>
             </mat-card>
             <span flex></span>
