@@ -64,6 +64,11 @@ export class FirebaseService {
     return this.db.collection('pets').snapshotChanges();
   }
 
+  getUsers(){
+    return this.db.collection('users').snapshotChanges();
+
+  }
+
   editPet(userKey, value){
     value.nameToSearch = value.name.toLowerCase();
     return this.db.collection('users').doc(userKey).set(value);
