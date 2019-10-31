@@ -34,6 +34,8 @@ import { AuthService } from './services/auth.service';
 import { AddNeedsComponent } from './pets/add-needs/add-needs.component';
 import { MatNativeDateModule } from '@angular/material'
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
+import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     DeletePetComponent,
     EditPetComponent,
     AddNeedsComponent,
+    AddOwnerComponent,
+    DeleteOwnerComponent,
   ],
   imports: [
     BrowserModule,

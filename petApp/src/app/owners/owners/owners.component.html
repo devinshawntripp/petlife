@@ -1,1 +1,22 @@
-<p>owners works!</p>
+<div>
+    <div class="card-container">
+        <div *ngFor="let pet of pets">
+            <mat-card class="pet-card">
+                <mat-card-header>
+                    <mat-card-title class="title">{{pet.payload.doc.data().name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                </mat-card-content>
+            </mat-card>
+            <span flex></span>
+        </div>
+    </div>
+    <div class="buttons">
+        <button mat-raised-button class="add-button" (click)="openDialog()">
+            <mat-icon>add</mat-icon>Add Pet
+        </button>
+        <button mat-raised-button class="delete-button" (click)="openSecondDialog()">
+            <mat-icon>delete</mat-icon>Delete Pet
+        </button>
+    </div>
+</div>
