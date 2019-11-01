@@ -68,14 +68,27 @@ background-color: white !important;
 	justify-content: center;
 	margin-top: 2%;
 	background-color: black;
+  opacity: .7;
 	border-radius: 5%;
 }
 
-.settings-button {
-	width: 50%;
-	margin-left: 25%;
+.settings-Wrapper {
+  display: flex !important;
+  width: 50% !important;
+  color: white;
+  justify-content: center;
+  object-fit: contain;
+}
+
+.update-button {
+  background-color: blue;
+  color: white;
+	width: 25%;
+  margin-left: 40%;
+  margin-right: 40%;
 	margin-top: 10%;
 	border-radius: 10%;
+  justify-content: center
 }
 
 ::placeholder {
