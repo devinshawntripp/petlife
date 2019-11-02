@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { User } from '../services/user.model';
 
 @Component({
   selector: 'app-schedule',
@@ -12,15 +13,20 @@ export class ScheduleComponent implements OnInit {
   needs: Array<any>
   owners: Array<any>
   completed: boolean
+  currentUser: string
 
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    private userModel: User
+
   ) { }
 
   ngOnInit() {
     this.getNeeds()
     this.getOwners()
+   // this.currentUser = this.userModel.userName
+  //  console.log(this.currentUser)
   }
 
   getNeeds(){
