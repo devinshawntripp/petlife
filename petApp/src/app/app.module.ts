@@ -81,7 +81,9 @@ import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.compone
     AddPetComponent,
     DeletePetComponent,
     EditPetComponent,
-    AddNeedsComponent
+    AddNeedsComponent,
+    AddNeedsComponent,
+    DeleteOwnerComponent
   ]
 })
 export class AppModule { }
