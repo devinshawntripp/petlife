@@ -1,27 +1,4 @@
-::ng-deep .mat-focused .mat-form-field-label {
- /*change color of label*/
- color: white !important;
-}
 
-::ng-deep.mat-form-field-underline {
- /*change color of underline*/
- background-color: white !important;
-}
-
-::ng-deep.mat-form-field-label {
-  color: white !important;
-}
-
-::ng-deep.mat-form-field-ripple {
-/*change color of underline when focused*/
-background-color: white !important;;
-}
-
-::ng-deep.mat-form-field {
-
-
-  width: 100% !important;
-}
 
 
 
@@ -35,8 +12,8 @@ background-color: white !important;;
   border-radius: 5px; */
   margin-top: 10%;
   padding: 10%;
-  background-color: black;
-  opacity: .7;
+  /* background-color: black; */
+  /* opacity: .7; */
   border-radius: 10%;
   background-blend-mode: difference;
 
@@ -49,12 +26,12 @@ img.image {
 
 }
 
-.image-wrapper {
+/* .image-wrapper {
   margin-top: 10%;
   display: flex;
   justify-content: center;
   object-fit: contain;
-}
+} */
 
 .image {
   position: absolute;

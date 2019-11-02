@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
 
 
 
+
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -47,13 +48,19 @@ tryRegister(value){
        // this.firebaseService.createUser(value).then( res => { this.router.navigate(['/dash']); })
        this.errorMessage = "";
        this.successMessage = "Your account has been created";
-       this.router.navigate(['/dash']);
+       this.router.navigate(['/household']);
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
        this.successMessage = "";
      })
    }
+
+   // getUserName(){
+   //   this.authService.getUserName(){
+   //
+   //   }
+   // }
 
   ngOnInit() {
 

@@ -24,6 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './services/firebase.service';
+import { AuthGService } from './services/auth-g.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeletePetComponent } from './pets/delete-pet/delete-pet/delete-pet.component';
@@ -34,6 +35,8 @@ import { AuthService } from './services/auth.service';
 import { AddNeedsComponent } from './pets/add-needs/add-needs.component';
 import { MatNativeDateModule } from '@angular/material'
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { HouseholdComponent } from './register/household/household.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
 import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.component';
 import { ScheduleComponent } from './schedule/schedule.component';
@@ -51,9 +54,10 @@ import { ScheduleComponent } from './schedule/schedule.component';
     DeletePetComponent,
     EditPetComponent,
     AddNeedsComponent,
+    HouseholdComponent,
     AddOwnerComponent,
     DeleteOwnerComponent,
-    ScheduleComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -74,10 +78,11 @@ import { ScheduleComponent } from './schedule/schedule.component';
     AngularFireAuthModule,
     ScrollingModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
 
   ],
-  providers: [ FirebaseService, AuthService ],
+  providers: [ FirebaseService, AuthService, AuthGService ],
   bootstrap: [AppComponent],
   entryComponents: [
     AddPetComponent,

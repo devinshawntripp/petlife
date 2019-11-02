@@ -32,7 +32,7 @@
         <a class="nav-link" (click)="tryLogout()">Logout</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="settings" routerLinkActive="active" (click)="authService.getUserData()">Account</a>
+        <a class="nav-link" routerLink="settings" routerLinkActive="active" (click)="authService.getUserData()">{{username}}</a>
       </li>
     </ul>
   </div>
