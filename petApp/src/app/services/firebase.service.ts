@@ -81,6 +81,13 @@ export class FirebaseService {
        .set({ completed: completed }, { merge: true });
   }
 
+  updateAnOwner(value, owners){
+    return this.db
+       .collection("pets")
+       .doc(value.payload.doc.id)
+       .set({ owners: owners }, { merge: true });
+  }
+
   // createHousehold(value){
   //
   //
