@@ -7,6 +7,7 @@ import { SettingsComponent } from './settings/settings/settings.component'
 import { LoginComponent } from './login/login.component'
 import { RegisterComponent } from './register/register.component'
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ScheduleComponent } from './schedule/schedule.component'
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
+  { path: 'schedule', component: ScheduleComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 

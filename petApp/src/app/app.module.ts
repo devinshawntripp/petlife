@@ -36,6 +36,7 @@ import { MatNativeDateModule } from '@angular/material'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
 import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.compone
     AddNeedsComponent,
     AddOwnerComponent,
     DeleteOwnerComponent,
+    ScheduleComponent,
   ],
   imports: [
     BrowserModule,
