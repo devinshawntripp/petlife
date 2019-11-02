@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { AngularFireAuth} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable({
@@ -8,8 +10,8 @@ import * as firebase from 'firebase/app';
 })
 export class FirebaseService {
 
-  user = firebase.auth().currentUser;
-  constructor(public db: AngularFirestore) {
+  // user = firebase.auth().currentUser;
+  constructor(public db: AngularFirestore, private afAuth: AngularFireAuth) {
 
   }
 
@@ -53,14 +55,62 @@ export class FirebaseService {
     return this.db.collection('Needs').snapshotChanges();
   }
 
-  addPet(value){
-    return this.db.collection('pets').add({
-      name: value.name,
-      nameToSearch: value.name.toLowerCase(),
-    });
+  isLoggedIn() {
+   return this.afAuth.authState.pipe(first()).toPromise();
+  }
+
+  async getPetID(){
+
+  }
+
+  async addPet(value){
+    // const user = await this.isLoggedIn();
+    // if(user) {
+    //   console.log("user is logged in");
+    //   return this.db.collection('users').doc(user.uid).collection('pets').add({
+    //     name: value.name
+    //   });
+    //   // return this.db.collection('pets').add({
+    //   //   name: value.name,
+    //   //   nameToSearch: value.name.toLowerCase(),
+    //   //
+    //   // });
+    // } else {
+    //   console.log("error adding a pet");
+    //   return 'nothing';
+    // }
+
+
+    const user = await this.isLoggedIn();
+    if(user) {
+      console.log("user is logged in");
+      return this.db.collection('pets').add({
+        name: value.name
+      }).then(docRef => {
+        //add the id to the user reference
+        this.db.collection('users').doc(user.uid).collection('pets').doc(docRef.id).set({
+          name: value.name
+        });
+        console.log("Document written with ID: ", docRef.id);
+      }).catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+    } else {
+      console.log("user is not logged in");
+      return 'error';
+    }
+
   }
 
   getPets(){
+    // const user = await this.isLoggedIn();
+    // if(user) {
+    //   // return this.db.collection('household')
+    //   return this.db.collection('pets').snapshotChanges();
+    // } else {
+    //   console.log("user is not logged in");
+    //   return 'error';
+    // }
     return this.db.collection('pets').snapshotChanges();
   }
 

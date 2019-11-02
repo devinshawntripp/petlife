@@ -1,21 +1,4 @@
 
-::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-  color: white !important;
-  background-color: transparent !important;
-}
-
-::ng-deep .cdk-text-field-autofilled {
-  background-color: transparent !important;
-}
-
-::ng-deep input.mat-form-field-autofill-control {
-  background-color: transparent !important;
-}
-
-::ng-deep input.mat-input-element {
-  color: white !important;
-  background-color: transparent !important;
-}
 
 ::ng-deep .mat-button {
   background-color: blue !important;

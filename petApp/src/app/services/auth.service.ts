@@ -11,6 +11,8 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './user.model';
 
+import { take, map } from 'rxjs/operators';
+
 import * as firebase from 'firebase/app';
 
 
@@ -26,25 +28,59 @@ export class AuthService {
 
   // user$: Observable<User>;
   // var user = firebase.auth().currentUser;
+  private user: Observable<firebase.User>;
+  private userDetails: firebase.User = null;
+  private userData: Observable<any>;
 
   constructor(
     private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
     private router: Router,
     public db: AngularFirestore
     ) {
-      // this.user$ = this.afAuth.authState.pipe(
-      //   switchMap(user => {
-      //     if(user) {
-      //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-      //     } else {
-      //       return of(null);
-      //     }
-      //   })
-      // );
+      this.user = afAuth.authState;
+
+      this.user.subscribe(
+        (user) => {
+          if (user) {
+            this.userDetails = user;
+            console.log(this.userDetails);
+          } else {
+            this.userDetails = null;
+          }
+        }
+      )
 
     }
 
+
+
+
+    // isLoggedIn() {
+    //  return this.afAuth.authState.pipe(first()).toPromise();
+    // }
+    isLoggedIn() {
+      if (this.userDetails == null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    getUserName() {
+      if(this.isLoggedIn()){
+        const userD = this.db.collection('users').doc(this.userDetails.uid);
+        const doc = userD.get();
+        return doc.pipe(
+          // add take if you only want data one time, which closes subscription
+          take(1),
+          map(d => d.data().firstName)
+        )
+      } else {
+        console.log('user not logged in');
+        // need to return an observable
+        return of("nothing");
+      }
+}
 
     doRegister(value){
       return new Promise<any>((resolve, reject) => {

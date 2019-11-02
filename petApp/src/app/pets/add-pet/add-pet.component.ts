@@ -27,6 +27,7 @@ export class AddPetComponent implements OnInit{
       this.firebaseService.addPet(value)
       .then(
         res => {
+          //need to add this pet ID to the household
           this.router.navigate(['/pets']);
         }
       )
