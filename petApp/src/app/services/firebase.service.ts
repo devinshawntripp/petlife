@@ -88,6 +88,11 @@ export class FirebaseService {
        .doc(value.payload.doc.id)
        .set({ owners: owners }, { merge: true });
   }
+  
+  updateUser(userKey, value){
+    value.nameToSearch = value.name.toLowerCase();
+    return this.db.collection('users').doc(userKey).set(value);
+  }
 
   // createHousehold(value){
   //

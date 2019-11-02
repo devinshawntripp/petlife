@@ -1,11 +1,7 @@
 <div class="settings-Wrapper">
   <div class="settings-content">
 
-     <form [formGroup]="settingsGroup">	
-
-	  <mat-form-field class="temp my-form-field">
-		  <input matInput placeholder="Household:" formControlName="houseHold">
-	  </mat-form-field>
+     <form [formGroup]="scheduleForm">	
 
 	  <mat-form-field class="temp">
                   <input matInput placeholder="First Name:" formControlName="firstName">
@@ -18,6 +14,10 @@
 	   <mat-form-field class="temp">
                   <input matInput placeholder="Username:" formControlName="userName">
           </mat-form-field>
+
+		<mat-form-field class="temp my-form-field">
+				<input matInput placeholder="Email:" formControlName="email">	
+		</mat-form-field>
 
 	   <mat-form-field class="temp">
                   <input matInput placeholder="Password:" formControlName="password">
