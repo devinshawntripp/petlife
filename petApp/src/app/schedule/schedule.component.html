@@ -1,0 +1,16 @@
+<mat-card class="card" style="margin-top: 10px">
+    <mat-card-header>
+        <mat-card-title class="title">Schedule</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngFor="let owner of owners">
+            <h6>{{owner.payload.doc.data().firstName}}:</h6>
+            <div *ngFor="let need of needs">
+                <p *ngIf="owner.payload.doc.data().firstName === need.payload.doc.data().owner">
+                    {{need.payload.doc.data().pet}}: {{need.payload.doc.data().what}} {{need.payload.doc.data().time}}
+                    <input type="checkbox" [checked]="need.payload.doc.data().completed" (change)="updateCompletion(need)"/>
+                </p>  
+            </div>   
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -80,4 +80,17 @@
      text-align: center;
      align-content: center;
    }
+
+   .list{
+     margin-bottom: 5%;
+   }
+
+   .card{
+     margin-bottom: 10%;
+   }
    
+   .schedulebutton{
+    margin-left: 10%; 
+    padding-right: 20%;
+     justify-content: center;
+   }

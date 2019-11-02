@@ -47,6 +47,7 @@ export class FirebaseService {
       time: value.time,
       day: value.day,
       pet: value.pet,
+      owner: value.owner,
       completed: false
     })
   }
@@ -114,6 +115,11 @@ export class FirebaseService {
     return this.db.collection('pets').snapshotChanges();
   }
 
+  getUsers(){
+    return this.db.collection('users').snapshotChanges();
+
+  }
+
   editPet(userKey, value){
     value.nameToSearch = value.name.toLowerCase();
     return this.db.collection('users').doc(userKey).set(value);
@@ -124,6 +130,18 @@ export class FirebaseService {
        .collection("Needs")
        .doc(value.payload.doc.id)
        .set({ completed: completed }, { merge: true });
+  }
+
+  updateAnOwner(value, owners){
+    return this.db
+       .collection("pets")
+       .doc(value.payload.doc.id)
+       .set({ owners: owners }, { merge: true });
+  }
+  
+  updateUser(userKey, value){
+    value.nameToSearch = value.name.toLowerCase();
+    return this.db.collection('users').doc(userKey).set(value);
   }
 
   // createHousehold(value){

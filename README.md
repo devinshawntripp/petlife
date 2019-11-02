@@ -1,4 +1,15 @@
 # PetLife
-Devin Tripp, Sarah Richards, Jorge Hernandez, Clint Wyatt
 
-Household pet management web application to help better take care of your pets with feeding/walking schedules, push notifications when 
+The purpose of the app PetLife is to help a household more efficiently take care of their pets. They will be able to keep track of their pet’s needs, coordinate a feeding schedule with fellow housemates, and remind them when to perform tasks.
+
+### Contributors 
+  * Jorge Hernandez
+  * Sarah Richards
+  * Devin Tripp
+  
+## Project information
+### Tech Stack
+  * Angular JS
+  * Node JS
+  * Firebase 
+  

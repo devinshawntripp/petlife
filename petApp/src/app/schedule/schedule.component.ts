@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-schedule',
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.css']
 })
-export class DashboardComponent implements OnInit{
+export class ScheduleComponent implements OnInit {
 
   needs: Array<any>
-  pets: Array<any>
+  owners: Array<any>
   completed: boolean
 
   constructor(
@@ -21,7 +20,7 @@ export class DashboardComponent implements OnInit{
 
   ngOnInit() {
     this.getNeeds()
-    this.getPets()
+    this.getOwners()
   }
 
   getNeeds(){
@@ -31,10 +30,10 @@ export class DashboardComponent implements OnInit{
     })
    }
 
-   getPets(){
-    this.firebaseService.getPets()
+   getOwners(){
+    this.firebaseService.getUsers()
     .subscribe(result => {
-      this.pets = result;
+      this.owners = result;
     })
    }
 
@@ -48,7 +47,7 @@ export class DashboardComponent implements OnInit{
     this.firebaseService.updateNeed(object, this.completed)
     .then(
       res => {
-        this.router.navigate(['/dash']);
+        this.router.navigate(['/schedule']);
       }
     )
   }

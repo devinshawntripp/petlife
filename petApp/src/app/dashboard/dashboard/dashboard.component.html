@@ -1,12 +1,23 @@
-<mat-card class="pet-card" style="margin-top: 10px">
-        <mat-card-header>
-            <mat-card-title class="title">Sarah's Schedule</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+<mat-card class="card" style="margin-top: 10px">
+    <mat-card-header>
+        <mat-card-title class="title">Sarah's Schedule</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngFor="let pet of pets">
+            <p>{{pet.payload.doc.data().name}}:</p>
             <div *ngFor="let need of needs">
-                <li>
-                    {{need.description}} {{need.hour}}:{{need.minute}} {{need.time}} <mat-slide-toggle class="toggle" [formControl]=""></mat-slide-toggle>
+                <li *ngIf="need.payload.doc.data().pet === pet.payload.doc.data().name" class="list">
+                    {{need.payload.doc.data().what}} {{need.payload.doc.data().time}}
+                    <input type="checkbox" [checked]="need.payload.doc.data().completed"
+                        (change)="updateCompletion(need)" />
                 </li>
             </div>
-        </mat-card-content>
+        </div>
+        <div></div>
+    </mat-card-content>
 </mat-card>
+
+    <button class="schedulebutton" mat-raised-button routerLink="/schedule">
+        <mat-icon></mat-icon>View Schedule
+    </button>
+    

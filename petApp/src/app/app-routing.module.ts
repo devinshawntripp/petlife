@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthGService } from './services/auth-g.service';
 import { HouseholdComponent } from './register/household/household.component';
-
+import { ScheduleComponent } from './schedule/schedule.component'
 
 const routes: Routes = [
   { path: 'dash', component: DashboardComponent, canActivate: [AuthGService] },
@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'household', component: HouseholdComponent },
+  { path: 'schedule', component: ScheduleComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 

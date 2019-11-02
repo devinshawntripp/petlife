@@ -35,8 +35,14 @@ import { AuthService } from './services/auth.service';
 import { AddNeedsComponent } from './pets/add-needs/add-needs.component';
 import { MatNativeDateModule } from '@angular/material'
 import {MatDatepickerModule} from '@angular/material/datepicker';
+<<<<<<< HEAD
 import { HouseholdComponent } from './register/household/household.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+=======
+import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
+import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -51,7 +57,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     DeletePetComponent,
     EditPetComponent,
     AddNeedsComponent,
+<<<<<<< HEAD
     HouseholdComponent,
+=======
+    AddOwnerComponent,
+    DeleteOwnerComponent,
+    ScheduleComponent,
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -82,7 +94,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AddPetComponent,
     DeletePetComponent,
     EditPetComponent,
-    AddNeedsComponent
+    AddNeedsComponent,
+    AddNeedsComponent,
+    DeleteOwnerComponent
   ]
 })
 export class AppModule { }
