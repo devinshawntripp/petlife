@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'household', component: HouseholdComponent },
-  { path: 'schedule', component: ScheduleComponent },
+  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGService] },
   { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
