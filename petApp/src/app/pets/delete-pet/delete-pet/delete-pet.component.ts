@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-delete-pet',
@@ -15,7 +16,8 @@ export class DeletePetComponent implements OnInit{
   constructor(
     public dialogRef: MatDialogRef<DeletePetComponent>,
     public firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
     ) { }
 
   confirmSelection() {
@@ -27,10 +29,12 @@ export class DeletePetComponent implements OnInit{
   }
 
   getPets(){
-    this.firebaseService.getPets()
-    .subscribe(result => {
-      this.pets = result;
-    })
+    this.authService.getPets().subscribe(
+      (pets) => {
+        this.pets = pets;
+        console.log(pets);
+      }
+    )
   }
 
   deletePet(pet){

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddOwnerComponent } from '../add-owner/add-owner.component'
 import { DeleteOwnerComponent } from '../delete-owner/delete-owner.component'
+import { AuthService } from 'src/app/services/auth.service';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -16,11 +18,13 @@ export class OwnersComponent implements OnInit {
   items: Array<any>
   pets: Array<any>
   name: string
+  subscription: Subscription;
 
   constructor(
     public firebaseService: FirebaseService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -36,10 +40,12 @@ export class OwnersComponent implements OnInit {
    }
 
    getPets(){
-    this.firebaseService.getPets()
-    .subscribe(result => {
-      this.pets = result;
-    })
+    this.authService.getPets().subscribe(
+      (pets) => {
+        this.pets = pets;
+        console.log(pets);
+      }
+    )
    }
 
    openDialog() {
