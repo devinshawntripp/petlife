@@ -1,14 +1,11 @@
 <div>
     <div class="card-container">
-        <div *ngFor="let pet of pets">
+        <div *ngFor="let user of items">
             <mat-card class="pet-card">
                 <mat-card-header>
-                    <mat-card-title class="title">{{pet.payload.doc.data().name}}</mat-card-title>
+                    <mat-card-title class="title">{{user.payload.doc.data().firstName}}</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <li *ngFor="let item of items">
-                        {{item.payload.doc.data().firstName}}
-                    </li>
                 </mat-card-content>
             </mat-card>
             <span flex></span>
