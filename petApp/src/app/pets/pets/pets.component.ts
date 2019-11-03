@@ -5,7 +5,9 @@ import { DeletePetComponent } from '../delete-pet/delete-pet/delete-pet.componen
 import { EditPetComponent } from '../edit-pet/edit-pet.component'
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
-import { AddNeedsComponent } from '../add-needs/add-needs.component'
+import { AddNeedsComponent } from '../add-needs/add-needs.component';
+import {Subscription} from 'rxjs/Subscription';
+import { AuthService } from 'src/app/services/auth.service';
 
 export interface DialogData {
   name: string;
@@ -23,11 +25,13 @@ export class PetsComponent implements OnInit{
   name: string;
   needs: Array<any>;
   completed: boolean;
+  subscription: Subscription;
 
   constructor(
     public dialog: MatDialog,
     public firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
     ) { }
 
   ngOnInit() {
@@ -36,10 +40,16 @@ export class PetsComponent implements OnInit{
    }
 
    getData(){
-    this.firebaseService.getPets()
-    .subscribe(result => {
-      this.items = result;
-    })
+    // this.firebaseService.getPets()
+    // .subscribe(result => {
+    //   this.items = result;
+    // })
+    this.authService.getPets().subscribe(
+      (pets) => {
+        this.items = pets;
+        console.log(pets);
+      }
+    )
    }
 
    getNeeds(){
