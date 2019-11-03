@@ -144,6 +144,10 @@ export class FirebaseService {
     return this.db.collection('users').doc(userKey).set(value);
   }
 
+  deletePet(data) {
+    return this.db.collection('pets').doc(data.payload.doc.id).delete();
+ }
+
   // createHousehold(value){
   //
   //
