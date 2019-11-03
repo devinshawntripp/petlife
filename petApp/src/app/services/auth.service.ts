@@ -92,6 +92,12 @@ export class AuthService {
       }
     }
 
+    getPetsForUID(uid){
+      if(this.isLoggedIn()){
+        return this.db.collection('users').doc(uid).collection('pets').snapshotChanges();
+      }
+    }
+
     doRegister(value){
       return new Promise<any>((resolve, reject) => {
         firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
