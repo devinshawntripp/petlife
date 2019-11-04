@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import {Subscription} from 'rxjs/Subscription';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,15 +15,20 @@ export class DashboardComponent implements OnInit{
   needs: Array<any>
   pets: Array<any>
   completed: boolean
+  subscription: Subscription;
+  userName: any
 
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService,
+
   ) { }
 
   ngOnInit() {
     this.getNeeds()
     this.getPets()
+    this.getName()
   }
 
   getNeeds(){
@@ -32,10 +39,21 @@ export class DashboardComponent implements OnInit{
    }
 
    getPets(){
-    this.firebaseService.getPets()
-    .subscribe(result => {
-      this.pets = result;
-    })
+    this.authService.getPets().subscribe(
+      (pets) => {
+        this.pets = pets;
+        console.log(pets);
+      }
+    )
+   }
+
+   getName(){
+    this.subscription = this.authService.getUserName().subscribe(
+      (userN) => {
+        this.userName = userN;
+        console.log(userN);
+      }
+    )
    }
 
    updateCompletion(object: any){
