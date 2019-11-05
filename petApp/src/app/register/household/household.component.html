@@ -12,10 +12,6 @@
     <br>
   <div *ngIf="noChecked">
       <button class="householdButton"  (click)="tryCreatingHousehold()" mat-raised-button>Create Household</button>
-      <br>
-      <label>Your unique household key: {{newHouseID}}</label>
-      <br>
-      <button class="continueButton" (click)="routeToSchedule()" mat-raised-button>Continue</button>
   </div>
 
     <div *ngIf="yesChecked">
