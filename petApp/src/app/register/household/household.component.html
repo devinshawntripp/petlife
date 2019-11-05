@@ -26,6 +26,14 @@
         </form>
     </div>
 
+    <br>
+
+    <div *ngIf="householdID" class="householdid">
+      <p>Share this household ID with housemates:</p>
+      <p>{{householdID}}</p>
+      <button mat-raised-button routerLink="/dash">Continue</button>
+    </div>
+
 </mat-card>
 
 </div>

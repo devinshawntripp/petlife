@@ -20,7 +20,7 @@ export class HouseholdComponent implements OnInit {
   yesChecked: boolean;
   noChecked: boolean;
   householdGroup: FormGroup;
-
+  householdID: any;
 
   constructor(
     public authService: AuthService,
@@ -41,21 +41,22 @@ export class HouseholdComponent implements OnInit {
     this.authService.createHousehold()
     .then(res => {
       console.log(res);
-
-      this.router.navigate(['/schedule']);
+      this.displayHouseholdID()
     }, err => {
       // console.log(err);
       // this.errorMessage = err.message;
       // this.successMessage = "";
     })
-
-
-
-
   }
 
-
-
+  displayHouseholdID(){
+    this.authService.getUserHouseholdID().subscribe(
+      (id) => {
+        console.log("the id passed in is " + id);
+        this.householdID = id;
+      }
+    )
+  }
 
   tryHouseholdJoin(value) {
     //check if the householdID exists in households
