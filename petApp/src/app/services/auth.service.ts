@@ -91,7 +91,7 @@ export class AuthService {
         // need to return an observable
         return of("nothing");
       }
-}
+    }
 
     getPets() {
       // if(this.isLoggedIn()){
@@ -164,12 +164,6 @@ export class AuthService {
       } else {
         console.log("user not logged in");
         return of("nothing");
-      }
-    }
-
-    getPetsForUID(uid){
-      if(this.isLoggedIn()){
-        return this.db.collection('users').doc(uid).collection('pets').snapshotChanges();
       }
     }
 

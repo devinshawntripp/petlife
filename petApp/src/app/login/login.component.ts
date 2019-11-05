@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.router.navigate(['/schedule']);
+      this.router.navigate(['/dash']);
       this.subscription = this.authService.getUserName().subscribe(
         (userN) => {
           this.apComp.username = userN;
