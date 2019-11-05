@@ -15,7 +15,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class OwnersComponent implements OnInit {
 
-  items: Array<any>
+  users: Array<any>
   pets: Array<any>
   name: string
   subscription: Subscription;
@@ -41,11 +41,10 @@ export class OwnersComponent implements OnInit {
   }
 
   getData(){
-    this.authService.getUsersID(this.householdid)
+    this.authService.getUsersFromHousehold(this.householdid)
     .subscribe(result => {
-
       console.log(result);
-      this.items = result;
+      this.users = result;
     })
    }
 
