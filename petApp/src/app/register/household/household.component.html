@@ -9,13 +9,7 @@
 
 
     <mat-checkbox class="no-box" type="checkbox" [(ngModel)]="noChecked">No</mat-checkbox>
-    <!-- <mat-checkbox type="checkbox" [checked]="completed" (change)="updateCompletion(need)">no</mat-checkbox> -->
     <br>
-
-
-     <!-- <form [formGroup]="householdGroup">
-
-  </form> -->
   <div *ngIf="noChecked">
       <button class="householdButton"  (click)="tryCreatingHousehold()" mat-raised-button>Create Household</button>
     </div>
