@@ -128,7 +128,7 @@ export class AuthService {
       return this.db.collection('households').doc(id).collection('pets').snapshotChanges();
     }
 
-    getUsersID(householdid){
+    getUsersFromHousehold(householdid){
       return this.db.collection('households').doc(householdid).collection('owners').snapshotChanges();
     }
 

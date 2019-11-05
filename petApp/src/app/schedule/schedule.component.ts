@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-schedule',
@@ -12,15 +13,24 @@ export class ScheduleComponent implements OnInit {
   needs: Array<any>
   owners: Array<any>
   completed: boolean
+  householdid: string;
 
   constructor(
     public firebaseService: FirebaseService,
-    private router: Router
+    private router: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.getNeeds()
-    this.getOwners()
+    this.authService.getUserHouseholdID().subscribe(
+      (id) => {
+        console.log("the id passed in is " + id);
+        this.householdid = id;
+        this.getNeeds()
+        this.getOwners()
+      }
+    )
+    
   }
 
   getNeeds(){
@@ -31,8 +41,9 @@ export class ScheduleComponent implements OnInit {
    }
 
    getOwners(){
-    this.firebaseService.getUsers()
+    this.authService.getUsersFromHousehold(this.householdid)
     .subscribe(result => {
+      console.log(result);
       this.owners = result;
     })
    }
