@@ -40,7 +40,12 @@
   margin-left: 30%;
 }
 
+<<<<<<< HEAD
 .householdid{
   justify-content: center;
+=======
+.continueButton {
+  margin-left: 33%;
+>>>>>>> e5d709c7d94ba8e36d34c0b78ecdad8ef35fd429
 }
 mat-checkbox ::ng-deep .mat-checkbox-container {width: 300px;}

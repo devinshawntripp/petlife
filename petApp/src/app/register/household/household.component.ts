@@ -36,6 +36,10 @@ export class HouseholdComponent implements OnInit {
     });
   }
 
+  routeToSchedule(){
+    this.router.navigate(['/schedule']);
+  }
+
 
   tryCreatingHousehold() {
     this.authService.createHousehold()
