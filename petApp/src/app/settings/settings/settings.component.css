@@ -1,6 +1,4 @@
-::ng-deep .mat-form-field-label {
-	color: white !important;
-}
+
 ::ng-deep .mat-focused .mat-form-field-label {
 color: white !important;
 }
@@ -9,6 +7,9 @@ color: white !important;
 background-color: white !important;
 }
 
+::ng-deep .mat-form-field-label {
+	color: white !important;
+}
 ::ng-deep.mat-form-field-ripple {
 background-color: white !important;
 }
@@ -21,7 +22,7 @@ background-color: white !important;
 /** Overrides underline color **/
 .my-form-field.mat-form-field-appearance-legacy .mat-form-field-underline,
 .my-form-field.mat-form-field-appearance-legacy .mat-form-field-ripple,
-.my-form-field.mat-form-field-appearance-legacy.mat-focused
+/.my-form-field.mat-form-field-appearance-legacy.mat-focused
 	.mat-form-field-underline,
 .my-form-field.mat-form-field-appearance-legacy.mat-focused
 	.mat-form-field-ripple {
@@ -78,6 +79,8 @@ background-color: white !important;
   color: white;
   justify-content: center;
   object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .update-button {
@@ -92,6 +95,5 @@ background-color: white !important;
 }
 
 ::placeholder {
-
 	color: white;
 }
