@@ -16,7 +16,9 @@ export class DashboardComponent implements OnInit{
   pets: Array<any>
   completed: boolean
   subscription: Subscription;
-  userName: any
+  userName: any;
+  householdid: string;
+
 
   constructor(
     public firebaseService: FirebaseService,
@@ -26,9 +28,15 @@ export class DashboardComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this.getNeeds()
-    this.getPets()
-    this.getName()
+    this.authService.getUserHouseholdID().subscribe(
+      (id) => {
+        console.log("the id passed in is " + id);
+        this.householdid = id;
+        this.getNeeds()
+        this.getPets()
+        this.getName()
+      }
+    )
   }
 
   getNeeds(){
@@ -39,12 +47,11 @@ export class DashboardComponent implements OnInit{
    }
 
    getPets(){
-    this.authService.getPets().subscribe(
-      (pets) => {
+    this.authService.getPetsTwo(this.householdid)
+    .subscribe(pets => {
         this.pets = pets;
         console.log(pets);
-      }
-    )
+      })
    }
 
    getName(){
