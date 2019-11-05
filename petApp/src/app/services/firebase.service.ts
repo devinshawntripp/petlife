@@ -85,14 +85,31 @@ export class FirebaseService {
     const user = await this.isLoggedIn();
     if(user) {
       console.log("user is logged in");
-      return this.db.collection('pets').add({
-        name: value.name
-      }).then(docRef => {
-        //add the id to the user reference
-        this.db.collection('users').doc(user.uid).collection('pets').doc(docRef.id).set({
+      return this.db.collection('household').add({
+
+      }).then(householdRef => {
+
+        this.db.collection('household').doc(householdRef.id).collection('pets').add({
           name: value.name
+
+
+
+        }).then(petRef => {
+          this.db.collection('users').doc(user.uid).collection('household').doc(householdRef.id).collection('pets').doc(petRef.id).set({
+            name: value.name
+          })
+
+
+
         });
-        console.log("Document written with ID: ", docRef.id);
+
+
+
+
+
+        //add the id to the user reference
+
+        console.log("Document written with ID: ", householdRef.id);
       }).catch(function(error) {
         console.error("Error adding document: ", error);
       });
@@ -138,7 +155,7 @@ export class FirebaseService {
        .doc(value.payload.doc.id)
        .set({ owners: owners }, { merge: true });
   }
-  
+
   updateUser(userKey, value){
     value.nameToSearch = value.name.toLowerCase();
     return this.db.collection('users').doc(userKey).set(value);

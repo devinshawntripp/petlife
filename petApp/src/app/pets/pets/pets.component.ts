@@ -26,6 +26,7 @@ export class PetsComponent implements OnInit{
   needs: Array<any>;
   completed: boolean;
   subscription: Subscription;
+  householdid: string;
 
   constructor(
     public dialog: MatDialog,
@@ -35,8 +36,15 @@ export class PetsComponent implements OnInit{
     ) { }
 
   ngOnInit() {
-    this.getData();
-    this.getNeeds();
+    this.authService.getUserHouseholdID().subscribe(
+      (id) => {
+        console.log("the id passed in is " + id);
+        this.householdid = id;
+        this.getData();
+        this.getNeeds();
+      }
+    )
+
    }
 
    getData(){
@@ -44,12 +52,11 @@ export class PetsComponent implements OnInit{
     // .subscribe(result => {
     //   this.items = result;
     // })
-    this.authService.getPets().subscribe(
-      (pets) => {
+    this.authService.getPetsTwo(this.householdid)
+    .subscribe(pets => {
         this.items = pets;
         console.log(pets);
-      }
-    )
+      })
    }
 
    getNeeds(){

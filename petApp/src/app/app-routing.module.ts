@@ -18,9 +18,9 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGService] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'household', component: HouseholdComponent },
-  { path: 'schedule', component: ScheduleComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full'}
+  { path: 'household', component: HouseholdComponent, canActivate: [AuthGService] },
+  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGService] },
+  { path: '', redirectTo: '/household', pathMatch: 'full'}
 ];
 
 @NgModule({

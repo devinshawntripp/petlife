@@ -1,15 +1,41 @@
-<mat-card class="register-content">
-  <form [formGroup]="householdGroup">
+<div class="household-content">
 
-    <h2>Do you have a household?</h2>
-    <mat-checkbox>Yes</mat-checkbox>
-    <mat-checkbox>no</mat-checkbox>
+<mat-card class="household-card1">
 
 
+    <h2 class="household-heading">Do you have a household?</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <mat-checkbox class="check-box" type="checkbox" [(ngModel)]="yesChecked">Yes</mat-checkbox>
 
 
+    <mat-checkbox type="checkbox" [(ngModel)]="noChecked">No</mat-checkbox>
+    <!-- <mat-checkbox type="checkbox" [checked]="completed" (change)="updateCompletion(need)">no</mat-checkbox> -->
+    <br>
 
 
+     <!-- <form [formGroup]="householdGroup">
 
-  </form>
+  </form> -->
 </mat-card>
+
+<mat-divider></mat-divider>
+<div *ngIf="yesChecked">
+  <mat-card class='type-id'>
+    <h3>Enter the household ID:</h3>
+    <form [formGroup]="householdGroup">
+      <mat-form-field>
+        <input matInput placeholder="Household ID:" formControlName="houseID">
+      </mat-form-field>
+    </form>
+    <br>
+    <button mat-raised-button>Join Household</button>
+  </mat-card>
+</div>
+
+<div *ngIf="noChecked">
+  <button  (click)="tryCreatingHousehold()" mat-raised-button>Create Household</button>
+</div>
+</div>
