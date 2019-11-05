@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   registerGroup: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+  email: string = '';
+  password: string = '';
 
 
 
@@ -41,6 +43,7 @@ export class RegisterComponent implements OnInit {
 // 	)
 // }
 
+
 tryRegister(value){
      this.authService.doRegister(value)
      .then(res => {
@@ -48,7 +51,11 @@ tryRegister(value){
        // this.firebaseService.createUser(value).then( res => { this.router.navigate(['/dash']); })
        this.errorMessage = "";
        this.successMessage = "Your account has been created";
+       this.email = value;
        this.router.navigate(['/household']);
+       // HComp.username = value
+       // HComp.password =
+       this.authService.doLogin(value);
      }, err => {
        console.log(err);
        this.errorMessage = err.message;

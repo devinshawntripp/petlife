@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import {MatDividerModule} from '@angular/material/divider';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-household',
   templateUrl: './household.component.html',
@@ -8,9 +15,44 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 })
 export class HouseholdComponent implements OnInit {
 
-  constructor() { }
+
+
+  yesChecked: boolean;
+  noChecked: boolean;
+  householdGroup: FormGroup;
+
+
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private fb: FormBuilder,
+    public firebaseService: FirebaseService
+  ) { }
 
   ngOnInit() {
+
+    this.householdGroup = this.fb.group ({
+      id: ['']
+    });
+    // this.authService.doLogin()
+  }
+
+
+  tryCreatingHousehold() {
+    this.authService.createHousehold()
+    .then(res => {
+      console.log(res);
+
+      this.router.navigate(['/schedule']);
+    }, err => {
+      // console.log(err);
+      // this.errorMessage = err.message;
+      // this.successMessage = "";
+    })
+
+
+
+
   }
 
 }

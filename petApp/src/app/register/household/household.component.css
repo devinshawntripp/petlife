@@ -1,0 +1,31 @@
+
+
+
+
+.household-content {
+  display: flex;
+  flex-direction: wrap;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.household-heading {
+
+  width: 100%;
+}
+
+.check-box {
+  margin-right: 2%;
+}
+
+.type-id {
+  margin-top: 5%;
+}
+
+.household-card1 {
+  width: 100%;
+}
+
+
+
+mat-checkbox ::ng-deep .mat-checkbox-container {width: 300px;}

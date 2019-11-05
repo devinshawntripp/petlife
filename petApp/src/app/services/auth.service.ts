@@ -85,10 +85,43 @@ export class AuthService {
     getPets() {
       if(this.isLoggedIn()){
         return this.db.collection('users').doc(this.userDetails.uid).collection('pets').snapshotChanges();
-        // const doc = userD.get();
-        // return doc.pipe(
-        //   map(d => d.data())
-        // )
+      }
+    }
+
+    async addPet(value){
+      const user = await this.isLoggedIn();
+      if(user) {
+        console.log("user is logged in");
+        this.getUserHouseholdID().subscribe(
+          (householdid) => {
+            return this.db.collection('households').doc(householdid).collection('pets').add({
+              name: value.name
+            })
+          }
+        )
+      } else {
+        console.log("user is not logged in");
+        return 'error';
+      }
+
+    }
+
+    getPetsTwo(id) {
+      return this.db.collection('households').doc(id).collection('pets').snapshotChanges();
+    }
+
+    getUserHouseholdID() {
+      if(this.isLoggedIn()){
+        const userD = this.db.collection('users').doc(this.userDetails.uid);
+        console.log(userD);
+        const doc = userD.get();
+        return doc.pipe(
+          take(1),
+          map(d => d.data().householdID)
+        )
+      } else {
+        console.log("user not logged in");
+        return of("nothing");
       }
     }
 
@@ -115,11 +148,31 @@ export class AuthService {
         }).then(res => {
 
           resolve(res);
+          this.doLogin(value);
 
         }, err => reject(err));
       });
 
 
+    }
+
+    createHousehold(){
+
+      return this.db.collection('households').add({
+
+      }).then(householdRef => {
+        return this.db.collection('users').doc(this.userDetails.uid).update({
+          householdID: householdRef.id
+        }).then(res => {
+          return this.db.collection('households').doc(householdRef.id).collection('owners').doc(this.userDetails.uid).set({
+            
+          })
+        })
+        console.log("Document written with ID: ", householdRef.id);
+
+      }).catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
     }
 
 

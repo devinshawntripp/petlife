@@ -40,6 +40,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
 import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     ScrollingModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule
 
   ],
   providers: [ FirebaseService, AuthService, AuthGService ],
