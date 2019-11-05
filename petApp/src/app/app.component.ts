@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { Router, Params } from '@angular/router';
-import { Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent {
   navbarOpen = false;
   errorMessage = '';
 
-  userObservable: Observable<any>;
+
   username = 'Account';
 
 

@@ -11,23 +11,12 @@ import * as firebase from 'firebase/app';
 export class FirebaseService {
 
   // user = firebase.auth().currentUser;
-  constructor(public db: AngularFirestore, private afAuth: AngularFireAuth) {
+  constructor(public db: AngularFirestore,
+    private afAuth: AngularFireAuth) {
 
   }
 
   createUser(value){
-
-    // if(this.user != null){
-    //   return this.db.collection('users/' + this.user.uid).add({
-    //     firstName: value.firstName,
-    //     nameToSearch: value.firstName.toLowerCase(),
-    //     lastName: value.lastName,
-    //     phoneNum: parseInt(value.phoneNum),
-    //     userName: value.userName,
-    //     password: value.password,
-    //     email: value.email
-    //   });
-    // }
 
     return this.db.collection('users').add({
       firstName: value.firstName,
@@ -65,21 +54,6 @@ export class FirebaseService {
   }
 
   async addPet(value){
-    // const user = await this.isLoggedIn();
-    // if(user) {
-    //   console.log("user is logged in");
-    //   return this.db.collection('users').doc(user.uid).collection('pets').add({
-    //     name: value.name
-    //   });
-    //   // return this.db.collection('pets').add({
-    //   //   name: value.name,
-    //   //   nameToSearch: value.name.toLowerCase(),
-    //   //
-    //   // });
-    // } else {
-    //   console.log("error adding a pet");
-    //   return 'nothing';
-    // }
 
 
     const user = await this.isLoggedIn();
@@ -121,15 +95,12 @@ export class FirebaseService {
   }
 
   getPets(){
-    // const user = await this.isLoggedIn();
-    // if(user) {
-    //   // return this.db.collection('household')
-    //   return this.db.collection('pets').snapshotChanges();
-    // } else {
-    //   console.log("user is not logged in");
-    //   return 'error';
-    // }
     return this.db.collection('pets').snapshotChanges();
+  }
+
+
+  getUserHouseholdID() {
+    return this.db.collection('users').doc()
   }
 
   getUsers(){
@@ -161,8 +132,10 @@ export class FirebaseService {
     return this.db.collection('users').doc(userKey).set(value);
   }
 
-  deletePet(data) {
-    return this.db.collection('pets').doc(data.payload.doc.id).delete();
+  deletePet(data, householdid) {
+    //get the id of household of the current user then delete the pet from the household
+    return this.db.collection('household').doc(householdid).collection('pets').doc(data.payload.doc.id).delete();
+    // return this.db.collection('pets').doc(data.payload.doc.id).delete();
  }
 
   // createHousehold(value){

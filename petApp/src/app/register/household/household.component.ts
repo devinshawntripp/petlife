@@ -34,7 +34,6 @@ export class HouseholdComponent implements OnInit {
     this.householdGroup = this.fb.group ({
       id: ['']
     });
-    // this.authService.doLogin()
   }
 
 

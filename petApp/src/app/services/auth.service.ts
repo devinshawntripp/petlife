@@ -31,6 +31,17 @@ export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
   private userData: Observable<any>;
+  houseid: string = 'null';
+
+
+
+  firstName: string;
+  nameToSearch: string;
+  lastName: string;
+  phoneNum: number;
+  userName: string;
+  password: string;
+  email: string;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -83,9 +94,16 @@ export class AuthService {
 }
 
     getPets() {
-      if(this.isLoggedIn()){
-        return this.db.collection('users').doc(this.userDetails.uid).collection('pets').snapshotChanges();
-      }
+      // if(this.isLoggedIn()){
+      //   return this.db.collection('users').doc(this.userDetails.uid).collection('pets').snapshotChanges();
+      // }
+      // this.getUserHouseholdID().subscribe(
+      //   (householdid) => {
+      //     this.houseid = householdid;
+      //   }).then(
+      //     return this.db.collection('households').doc(this.houseid).collection('pets').snapshotChanges();
+      // )
+
     }
 
     async addPet(value){
@@ -110,6 +128,30 @@ export class AuthService {
       return this.db.collection('households').doc(id).collection('pets').snapshotChanges();
     }
 
+    getUsersID(householdid){
+      return this.db.collection('households').doc(householdid).collection('owners').snapshotChanges();
+    }
+
+    // getUsersTwo(){
+    //
+    //   // const housid;
+    //   // const ownersid;
+    //   // this.getUserHouseholdID().subscribe( (householdID) => {
+    //   //   this.getUsersID(householdID).subscribe( (id) => {
+    //   //
+    //   //     return this.db.collection('users').doc(id).snapshotChanges();
+    //   //   })
+    //   // }
+    //   //
+    //   // )
+    //   // this.getUsersIDs()
+    //   // return this.db.collection('users').doc(userID).snapshotChanges();
+    // }
+    //
+    // getUsers() {
+    //   return this.db.collection().snapshotChanges();
+    // }
+
     getUserHouseholdID() {
       if(this.isLoggedIn()){
         const userD = this.db.collection('users').doc(this.userDetails.uid);
@@ -132,6 +174,15 @@ export class AuthService {
     }
 
     doRegister(value){
+      this.firstName = value.firstName;
+      this.nameToSearch = value.firstName.toLowerCase();
+      this.lastName = value.lastName;
+      this.phoneNum = parseInt(value.phoneNum);
+      this.userName = value.userName;
+      this.password = value.password;
+      this.email = value.email;
+
+
       return new Promise<any>((resolve, reject) => {
         firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
         .then(cred => {
@@ -165,7 +216,13 @@ export class AuthService {
           householdID: householdRef.id
         }).then(res => {
           return this.db.collection('households').doc(householdRef.id).collection('owners').doc(this.userDetails.uid).set({
-            
+            firstName: this.firstName,
+            nameToSearch: this.nameToSearch,
+            lastName: this.lastName,
+            phoneNum: this.phoneNum,
+            userName: this.userName,
+            password: this.password,
+            email: this.email
           })
         })
         console.log("Document written with ID: ", householdRef.id);

@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {Subscription} from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-delete-pet',
@@ -12,6 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class DeletePetComponent implements OnInit{
 
   pets: Array<any>
+  householdid: string;
 
   constructor(
     public dialogRef: MatDialogRef<DeletePetComponent>,
@@ -25,11 +28,18 @@ export class DeletePetComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.getPets()
+    this.authService.getUserHouseholdID().subscribe(
+      (id) => {
+        console.log("the id passed in is " + id);
+        this.householdid = id;
+        this.getPets();
+      }
+    )
+
   }
 
   getPets(){
-    this.authService.getPets().subscribe(
+    this.authService.getPetsTwo(this.householdid).subscribe(
       (pets) => {
         this.pets = pets;
         console.log(pets);
@@ -38,7 +48,7 @@ export class DeletePetComponent implements OnInit{
   }
 
   deletePet(pet){
-    this.firebaseService.deletePet(pet)
+    this.firebaseService.deletePet(pet, this.householdid)
   }
 
 }
