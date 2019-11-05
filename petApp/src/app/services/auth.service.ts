@@ -132,6 +132,24 @@ export class AuthService {
       return this.db.collection('households').doc(householdid).collection('owners').snapshotChanges();
     }
 
+
+
+    getUser(householdid) {
+      return this.db.collection('users').doc(this.userDetails.uid).snapshotChanges();
+    }
+
+    addUserToHouse(householdid){
+      return this.db.collection('households').doc(householdid).collection('owners').doc(this.userDetails.uid).set({
+        firstName: this.firstName,
+        nameToSearch: this.nameToSearch,
+        lastName: this.lastName,
+        phoneNum: this.phoneNum,
+        userName: this.userName,
+        password: this.password,
+        email: this.email
+      });
+    }
+
     // getUsersTwo(){
     //
     //   // const housid;
@@ -165,6 +183,20 @@ export class AuthService {
         console.log("user not logged in");
         return of("nothing");
       }
+    }
+
+
+
+    householdExists(householdid) {
+      return this.db.collection('households').doc(householdid).ref.get()
+        .then(docsnapshot => {
+          console.log(docsnapshot);
+          if(docsnapshot.exists){
+            return true;
+          } else {
+            return false;
+          }
+        })
     }
 
     doRegister(value){

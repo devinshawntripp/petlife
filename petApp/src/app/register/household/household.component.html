@@ -14,7 +14,7 @@
 
 
      <!-- <form [formGroup]="householdGroup">
-      
+
   </form> -->
   <div *ngIf="noChecked">
       <button class="householdButton"  (click)="tryCreatingHousehold()" mat-raised-button>Create Household</button>
@@ -22,15 +22,16 @@
 
     <div *ngIf="yesChecked">
         <h3>Enter the household ID:</h3>
-        <form [formGroup]="householdGroup">
+        <form [formGroup]="householdGroup" (ngSubmit)="tryHouseholdJoin(householdGroup.value)">
           <mat-form-field>
             <input matInput placeholder="Household ID:" formControlName="houseID">
           </mat-form-field>
+
+          <br>
+          <button type="submit" mat-raised-button>Join Household</button>
         </form>
-        <br>
-        <button mat-raised-button>Join Household</button>
     </div>
-    
+
 </mat-card>
 
 </div>
