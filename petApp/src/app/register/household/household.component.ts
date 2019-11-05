@@ -32,7 +32,7 @@ export class HouseholdComponent implements OnInit {
   ngOnInit() {
 
     this.householdGroup = this.fb.group ({
-      id: ['']
+      houseID: ['']
     });
   }
 
@@ -53,5 +53,20 @@ export class HouseholdComponent implements OnInit {
 
 
   }
+
+
+
+
+  tryHouseholdJoin(value) {
+    //check if the householdID exists in households
+    console.log(value.houseID);
+    if(this.authService.householdExists(value.houseID)){
+      //household exists so add the user to the household
+      this.authService.addUserToHouse(value.houseID);
+      this.router.navigate(['/schedule']);
+    }
+  }
+
+
 
 }
