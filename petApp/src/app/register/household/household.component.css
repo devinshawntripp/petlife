@@ -39,4 +39,8 @@
   margin-top: 10%;
   margin-left: 30%;
 }
+
+.continueButton {
+  margin-left: 33%;
+}
 mat-checkbox ::ng-deep .mat-checkbox-container {width: 300px;}

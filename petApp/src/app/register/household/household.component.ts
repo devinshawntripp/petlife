@@ -20,7 +20,7 @@ export class HouseholdComponent implements OnInit {
   yesChecked: boolean;
   noChecked: boolean;
   householdGroup: FormGroup;
-
+  newHouseID: string;
 
   constructor(
     public authService: AuthService,
@@ -36,13 +36,18 @@ export class HouseholdComponent implements OnInit {
     });
   }
 
+  routeToSchedule(){
+    this.router.navigate(['/schedule']);
+  }
+
 
   tryCreatingHousehold() {
     this.authService.createHousehold()
     .then(res => {
-      console.log(res);
+      this.authService.getUserHouseholdID().subscribe((res) => {
+        this.newHouseID = res;
+      })
 
-      this.router.navigate(['/schedule']);
     }, err => {
       // console.log(err);
       // this.errorMessage = err.message;
