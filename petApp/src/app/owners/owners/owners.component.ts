@@ -19,6 +19,7 @@ export class OwnersComponent implements OnInit {
   pets: Array<any>
   name: string
   subscription: Subscription;
+  householdid: string;
 
   constructor(
     public firebaseService: FirebaseService,
@@ -28,19 +29,28 @@ export class OwnersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getData();
-    this.getPets();
+    this.authService.getUserHouseholdID().subscribe(
+      (id) => {
+        console.log("the id passed in is " + id);
+        this.householdid = id;
+        this.getData();
+        this.getPets();
+      }
+    )
+
   }
 
   getData(){
-    this.firebaseService.getUsers()
+    this.authService.getUsersID(this.householdid)
     .subscribe(result => {
+
+      console.log(result);
       this.items = result;
     })
    }
 
    getPets(){
-    this.authService.getPets().subscribe(
+    this.authService.getPetsTwo(this.householdid).subscribe(
       (pets) => {
         this.pets = pets;
         console.log(pets);
