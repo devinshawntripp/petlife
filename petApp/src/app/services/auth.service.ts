@@ -80,9 +80,7 @@ export class AuthService {
         // need to return an observable
         return of("nothing");
       }
-
-    
-}
+    }
 
     getPets() {
       if(this.isLoggedIn()){
