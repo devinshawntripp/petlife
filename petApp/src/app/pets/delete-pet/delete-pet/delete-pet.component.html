@@ -2,8 +2,8 @@
 <div mat-dialog-content class="dialog">
     <ul class="collection">
         <li *ngFor="let pet of pets">
-          <span class="col s11"> {{ pet.payload.doc.data().name }} </span
-          ><a class="col s1" (click)="deletePet(pet)">x</a>
+          <span class="col s11"> {{ pet.payload.doc.data().name }} </span>
+          <button class="delete-button" mat-button class="col s1" (click)="deletePet(pet.payload.doc.id)">x</button>
         </li>
       </ul>
 </div>
