@@ -63,12 +63,6 @@ export class AuthService {
 
     }
 
-
-
-
-    // isLoggedIn() {
-    //  return this.afAuth.authState.pipe(first()).toPromise();
-    // }
     isLoggedIn() {
       if (this.userDetails == null) {
         return false;
@@ -149,26 +143,6 @@ export class AuthService {
         email: this.email
       });
     }
-
-    // getUsersTwo(){
-    //
-    //   // const housid;
-    //   // const ownersid;
-    //   // this.getUserHouseholdID().subscribe( (householdID) => {
-    //   //   this.getUsersID(householdID).subscribe( (id) => {
-    //   //
-    //   //     return this.db.collection('users').doc(id).snapshotChanges();
-    //   //   })
-    //   // }
-    //   //
-    //   // )
-    //   // this.getUsersIDs()
-    //   // return this.db.collection('users').doc(userID).snapshotChanges();
-    // }
-    //
-    // getUsers() {
-    //   return this.db.collection().snapshotChanges();
-    // }
 
     getUserHouseholdID() {
       if(this.isLoggedIn()){

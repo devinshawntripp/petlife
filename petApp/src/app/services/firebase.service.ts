@@ -132,16 +132,13 @@ export class FirebaseService {
     return this.db.collection('users').doc(userKey).set(value);
   }
 
-  deletePet(data, householdid) {
+  deletePet(petID, householdid) {
     //get the id of household of the current user then delete the pet from the household
-    return this.db.collection('household').doc(householdid).collection('pets').doc(data.payload.doc.id).delete();
+    console.log("here is the pet data being deleted" + petID);
+    console.log("here is the household id: " + householdid);
+    return this.db.collection('households').doc(householdid).collection('pets').doc(petID).delete();
     // return this.db.collection('pets').doc(data.payload.doc.id).delete();
  }
-
-  // createHousehold(value){
-  //
-  //
-  // }
 
 
 }

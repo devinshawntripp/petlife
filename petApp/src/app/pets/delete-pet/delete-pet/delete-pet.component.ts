@@ -47,8 +47,9 @@ export class DeletePetComponent implements OnInit{
     )
   }
 
-  deletePet(pet){
-    this.firebaseService.deletePet(pet, this.householdid)
+  deletePet(petid){
+    this.firebaseService.deletePet(petid, this.householdid)
+    console.log("delete button was clicked");
   }
 
 }
