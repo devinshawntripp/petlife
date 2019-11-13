@@ -1,21 +1,21 @@
 
 ::ng-deep .mat-focused .mat-form-field-label {
-color: white !important;
+color: black !important;
 }
 
 ::ng-deep.mat-form-field-underline {
-background-color: white !important;
+background-color: black !important;
 }
 
 ::ng-deep .mat-form-field-label {
-	color: white !important;
+	color: black !important;
 }
 ::ng-deep.mat-form-field-ripple {
-background-color: white !important;
+background-color: black !important;
 }
 
 ::ng-deep input.mat-input-element {
-	color: white !important;
+	color: black !important;
 	background-color: transparent !important;
 }
 
@@ -26,7 +26,7 @@ background-color: white !important;
 	.mat-form-field-underline,
 .my-form-field.mat-form-field-appearance-legacy.mat-focused
 	.mat-form-field-ripple {
-	background-color: white;
+	background-color: black;
 	width: 100%;
 }
 
@@ -34,14 +34,14 @@ background-color: white !important;
 .my-form-field.mat-form-field-appearance-legacy .mat-form-field-label,
 .my-form-field.mat-form-field-appearance-legacy.mat-focused
 	.mat-form-field-label { 
-	color: white;
+	color: black;
 	width: 100%;
 }
 
 /** Overrides caret & text color **/
 .my-form-field.mat-form-field-appearance-legacy .mat-input-element {
-	caret-color: white;
-	color: white;
+	caret-color: black;
+	color: black;
 	width: 100%;
 }
 
@@ -58,18 +58,18 @@ background-color: white !important;
 .temp {
 	padding: 5%;
 	width: 100% !important;
-	color: white !important;
+	color: black !important;
 }
 
 .settings-content {
 	display: flex !important;
-	color: white;
+	color: black;
 	border: 5px;
 	width: 100%;
 	justify-content: center;
 	margin-top: 2%;
-	background-color: black;
-  opacity: .7;
+	background-color: white;
+  opacity: 1;
 	border-radius: 5%;
 }
 
@@ -95,5 +95,5 @@ background-color: white !important;
 }
 
 ::placeholder {
-	color: white;
+	color: black;
 }

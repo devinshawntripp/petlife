@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-settings',
@@ -11,10 +16,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SettingsComponent implements OnInit {
 
+  errorMessage: string = '';
+  successMessage: string = '';
   scheduleForm: FormGroup
   item: any
 
   constructor(
+    public authService: AuthService,
     public firebaseService: FirebaseService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -43,7 +51,7 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  onSubmit(value){
+  /*onSubmit(value){
     value.avatar = this.item.avatar;
     value.age = Number(value.age);
     this.firebaseService.updateUser(this.item.id, value)
@@ -52,6 +60,19 @@ export class SettingsComponent implements OnInit {
         this.router.navigate(['/home']);
       }
     )
-  }
+  }*/
 
+  trySettings(value) {
+    this.authService.doSettings(value)
+      .then(res => {
+        console.log(res);
+        this.errorMessage = "";
+        this.successMessage = "Your account has been updated";
+        this.router.navigate(['/settings']);
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = "";
+      })
+  }
 }
