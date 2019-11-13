@@ -233,6 +233,29 @@ export class AuthService {
 
     }
 
+    doSettings(value) {
+      this.firstName = value.firstName;
+      this.nameToSearch = value.firstName.toLowerCase();
+      this.lastName = value.lastName;
+      this.phoneNum = parseInt(value.phoneNum);
+      this.userName = value.userName;
+      this.password = value.password;
+      this.email = value.email;
+
+
+      return this.db.collection('users').doc(this.userName).set({
+        firstName: value.firstName,
+        nameToSearch: value.firstName.toLowerCase(),
+        lastName: value.lastName,
+        phoneNum: parseInt(value.phoneNum),
+        userName: value.userName,
+        password: value.password,
+        email: value.email
+      });
+
+
+    }
+
     createHousehold(){
 
       return this.db.collection('households').add({
