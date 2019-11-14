@@ -22,14 +22,14 @@ export class SettingsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.data.subscribe(routeData => {
-      let data = routeData['data'];
-      if (data) {
-        this.item = data.payload.data();
-        this.item.id = data.payload.id;
-        this.createForm();
-      }
-    })
+    // this.route.data.subscribe(routeData => {
+    //   let data = routeData['data'];
+    //   if (data) {
+    //     this.item = data.payload.data();
+    //     this.item.id = data.payload.id;
+    //     this.createForm();
+    //   }
+    // })
   }
 
   createForm() {
