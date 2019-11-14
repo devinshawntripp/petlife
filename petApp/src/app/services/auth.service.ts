@@ -7,7 +7,7 @@ import { AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from './user.model';
 
@@ -33,6 +33,10 @@ export class AuthService {
   private userData: Observable<any>;
   houseid: string = 'null';
 
+  redirectURL: string;
+
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+
 
 
   firstName: string;
@@ -53,9 +57,14 @@ export class AuthService {
       this.user.subscribe(
         (user) => {
           if (user) {
+            this.isLoggedIn.next(true);
             this.userDetails = user;
             console.log(this.userDetails);
+            if(this.redirectURL){
+              this.router.navigate([this.redirectURL]);
+            }
           } else {
+            this.isLoggedIn.next(false);
             this.userDetails = null;
           }
         }
@@ -63,16 +72,18 @@ export class AuthService {
 
     }
 
-    isLoggedIn() {
-      if (this.userDetails == null) {
-        return false;
-      } else {
-        return true;
-      }
-    }
+    // isLoggedIn() {
+    //   if (this.userDetails == null) {
+    //     return false;
+    //   } else {
+    //     return true;
+    //   }
+    // }
+
+
 
     getUserName() {
-      if(this.isLoggedIn()){
+      if(this.isLoggedIn){
         const userD = this.db.collection('users').doc(this.userDetails.uid);
         const doc = userD.get();
         return doc.pipe(
@@ -101,7 +112,7 @@ export class AuthService {
     }
 
     async addPet(value){
-      const user = await this.isLoggedIn();
+      const user = await this.isLoggedIn;
       if(user) {
         console.log("user is logged in");
         this.getUserHouseholdID().subscribe(
@@ -145,7 +156,7 @@ export class AuthService {
     }
 
     getUserHouseholdID() {
-      if(this.isLoggedIn()){
+      if(this.isLoggedIn){
         const userD = this.db.collection('users').doc(this.userDetails.uid);
         console.log(userD);
         const doc = userD.get();
