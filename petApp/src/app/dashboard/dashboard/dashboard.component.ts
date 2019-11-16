@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import {Subscription} from 'rxjs/Subscription';
 import { AuthService } from 'src/app/services/auth.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,8 +25,18 @@ export class DashboardComponent implements OnInit{
     public firebaseService: FirebaseService,
     private router: Router,
     public authService: AuthService,
+    public apComp: AppComponent
 
-  ) { }
+  ) {
+    this.subscription = this.authService.getUserName().subscribe(
+      (userN) => {
+        this.apComp.username = userN;
+        console.log(userN);
+      }
+    )
+
+
+  }
 
   ngOnInit() {
     this.authService.getUserHouseholdID().subscribe(

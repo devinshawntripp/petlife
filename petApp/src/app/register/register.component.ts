@@ -45,6 +45,9 @@ export class RegisterComponent implements OnInit {
 
 
 tryRegister(value){
+
+
+
      this.authService.doRegister(value)
      .then(res => {
        console.log(res);
@@ -77,7 +80,8 @@ tryRegister(value){
       userName: [''],
       password: [''],
       phoneNum: [''],
-      email: ['']
+      email: [''],
+      confirmPass: ['']
 
     });
 

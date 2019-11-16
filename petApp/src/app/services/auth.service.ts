@@ -52,6 +52,23 @@ export class AuthService {
     private router: Router,
     public db: AngularFirestore
     ) {
+      // firebase.auth().onAuthStateChanged(function(use) {
+      //   console.log('reached here');
+      //   if(use) {
+      //     this.isLoggedIn.next(true);
+      //     this.userDetails = use;
+      //   } else {
+      //     console.log('reached here');
+      //     this.isLoggedIn.next(false);
+      //     this.userDetails = null;
+      //   }
+      //
+      //
+      // });
+
+
+
+
       this.user = afAuth.authState;
 
       this.user.subscribe(
@@ -80,7 +97,10 @@ export class AuthService {
     //   }
     // }
 
-
+    getUserID(){
+      console.log(this.userDetails.uid);
+      return this.userDetails.uid;
+    }
 
     getUserName() {
       if(this.isLoggedIn){
@@ -96,6 +116,15 @@ export class AuthService {
         // need to return an observable
         return of("nothing");
       }
+    }
+
+    getUserData() {
+      const userD = this.db.collection('users').doc(this.userDetails.uid);
+      const doc = userD.get();
+      return doc.pipe(
+        take(1),
+        map(d => d.data())
+      )
     }
 
     getPets() {
@@ -139,9 +168,13 @@ export class AuthService {
 
 
 
-    getUser(householdid) {
+    getUser() {
       return this.db.collection('users').doc(this.userDetails.uid).snapshotChanges();
     }
+
+    // getUserData() {
+    //   return this.db.collection('users').doc(this.user)
+    // }
 
     addUserToHouse(householdid){
       return this.db.collection('households').doc(householdid).collection('owners').doc(this.userDetails.uid).set({
@@ -228,7 +261,7 @@ export class AuthService {
       this.email = value.email;
 
 
-      return this.db.collection('users').doc(this.userName).set({
+      return this.db.collection('users').doc(this.userDetails.uid).update({
         firstName: value.firstName,
         nameToSearch: value.firstName.toLowerCase(),
         lastName: value.lastName,
@@ -237,6 +270,10 @@ export class AuthService {
         password: value.password,
         email: value.email
       });
+
+      // return this.db.collection('users').doc(this.userDetails.uid).set({
+      //
+      // });
 
 
     }

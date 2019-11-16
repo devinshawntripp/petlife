@@ -1,31 +1,36 @@
 <div class="settings-Wrapper">
   <div class="settings-content">
 
-     <form [formGroup]="scheduleForm">	
+     <form [formGroup]="scheduleForm">
 
 	  <mat-form-field class="temp">
-                  <input matInput placeholder="First Name:" formControlName="firstName">
+                  <input matInput placeholder="First Name:" formControlName="firstName" value="{{firstN}}">
 	  </mat-form-field>
 
 	  <mat-form-field class="temp">
-		  <input matInput placeholder="Last Name:" formControlName="lastName">
+		  <input matInput placeholder="Last Name:" formControlName="lastName" value="{{lastN}}">
 	  </mat-form-field>
+    <!-- <p>this is the last Name: {{lastN}}</p> -->
 
 	   <mat-form-field class="temp">
-                  <input matInput placeholder="Username:" formControlName="userName">
+                  <input matInput placeholder="Username:" formControlName="userName" value="{{userN}}">
           </mat-form-field>
 
 		<mat-form-field class="temp my-form-field">
-				<input matInput placeholder="Email:" formControlName="email">	
+				<input matInput placeholder="Email:" formControlName="email" value="{{em}}">
 		</mat-form-field>
 
 	   <mat-form-field class="temp">
-                  <input matInput placeholder="Password:" formControlName="password">
+                  <input matInput placeholder="Password:" formControlName="password" value="{{pass}}">
           </mat-form-field>
 
 	   <mat-form-field class="temp">
-                  <input matInput placeholder="Phone Number:" formControlName="phoneNum">
+                  <input matInput placeholder="Phone Number:" formControlName="phoneNum" value="{{phonenum}}">
           </mat-form-field>
+
+
+     <p>    HouseholdID: {{household}}</p>
+
 
 	  <button mat-raised-button class="update-button" type="submit">Update</button>
      </form>

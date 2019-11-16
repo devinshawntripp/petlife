@@ -15,7 +15,7 @@ export class AuthGService implements CanActivate{
 
 
 
-
+        // console.log(state.root.data.userDetails.uid);
         this.authService.redirectURL = state.url;
         this.router.navigate(['/login']);
         return false;
