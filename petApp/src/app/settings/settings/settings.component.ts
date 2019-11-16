@@ -20,6 +20,15 @@ export class SettingsComponent implements OnInit {
   successMessage: string = '';
   scheduleForm: FormGroup
   item: any
+  firstN: string = '';
+  lastN: string = '';
+  userN: string = '';
+  em: string = '';
+  pass: string = '';
+  phonenum: string = '';
+  household: string = '';
+
+
 
   constructor(
     public authService: AuthService,
@@ -27,7 +36,22 @@ export class SettingsComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-  ) { }
+  ) {
+    this.authService.getUserData().subscribe(
+      (userData) => {
+        console.log("the user passed in is " + userData);
+        this.firstN = userData.firstName;
+        this.lastN = userData.lastName;
+        this.userN = userData.userName;
+        this.em = userData.email;
+        this.pass = userData.password;
+        this.phonenum = userData.phoneNum;
+        this.household = userData.householdID;
+      }
+    )
+
+
+   }
 
   ngOnInit() {
     // this.route.data.subscribe(routeData => {
@@ -35,8 +59,32 @@ export class SettingsComponent implements OnInit {
     //   if (data) {
     //     this.item = data.payload.data();
     //     this.item.id = data.payload.id;
-    //     this.createForm();
+    //     this.lastN = this.item.lastName;
+    //     console.log('reached this code');
+    //     // this.createForm();
     //   }
+
+
+    this.scheduleForm = this.fb.group({
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      password: [''],
+      phoneNum: [''],
+      userName: ['']
+    });
+
+    // this.authService.getUserID();
+    //
+    // this.authService.getUser().subscribe(
+    //   (user) => {
+    //     console.log("the user passed in is " + user);
+    //
+    //   }
+    // )
+
+
+
     // })
   }
 
