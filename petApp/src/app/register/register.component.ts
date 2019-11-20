@@ -56,8 +56,6 @@ tryRegister(value){
        this.successMessage = "Your account has been created";
        this.email = value;
        this.router.navigate(['/household']);
-       // HComp.username = value
-       // HComp.password =
        this.authService.doLogin(value);
      }, err => {
        console.log(err);

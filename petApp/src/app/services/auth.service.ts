@@ -168,6 +168,88 @@ export class AuthService {
 
 
 
+    // getUse(household) {
+    //   return this.db.collection('households').doc(householdid).collection('owners');
+    // }
+    // getOwners(householdid){
+    //   const householdUsersData = this.db.collection('households').doc(householdid).collection('owners');
+    //   const doc = householdUsersData.get();
+    //   return doc.pipe(
+    //     map(d => d.data().)
+    //   )
+    // }
+    getOwner(householdid){
+      // return this.db.collection('users').doc(snapid).snapshotChanges();
+      return this.getOwnsersIDs(householdid).add(cred => {
+        return cred.docs.map((snap) => {
+          return this.db.collection('users').doc(snap.id).snapshotChanges();
+        })
+      })
+    }
+    getOwnersThree(householdid){
+      return new Promise<any>((resolve, reject) => {
+        this.db.collection('households').doc(householdid).collection('owners').snapshotChanges()
+        .subscribe((res) => {
+          return res.map(snap => {
+            resolve(snap);
+            console.log("hello world" + snap.payload.doc.id);
+          })
+        });
+      })
+    }
+
+    getOwnersFour(householdid) {
+      return this.db.collection('households').doc(householdid).collection('owners').snapshotChanges();
+    }
+
+    getUserDataLast(userID) {
+      return this.db.collection('users').doc(userID).snapshotChanges();
+    }
+
+
+
+    getOwnsersIDs(householdid){
+      return this.db.collection('households').doc(householdid).collection('owners').get().subscribe(cred => {
+
+      });
+    }
+
+    // getOwnersIDs(householdid){
+    //   return this.db.collection('households').doc(householdid).collection('owners').get().subscribe(cred => {
+    //     cred.docs.map(snap => {
+    //       return this.db.collection('users').doc(snap.id).snapshotChanges();
+    //     })
+    //   })
+    // }
+
+    getOwners(householdid){
+
+
+      return new Promise<any>((resolve, reject) => {
+        return this.db.collection('households').doc(householdid).collection('owners').get()
+        .subscribe(cred => {
+          return cred.docs.map(snap => {
+
+            return this.db.collection('users').doc(snap.id).snapshotChanges();
+
+            console.log(snap.id)
+          })
+          // return Promise.all(cred.map(snap => {
+          //   console.log(snap.payload.oldIndex.toString());
+          //   this.db.collection('users').doc(snap.payload.doc.data().id);
+          //
+          //
+          // }))
+          // return this.db.collection('users').doc().set({
+          //
+          // });
+
+        })
+      });
+    }
+
+
+
     getUser() {
       return this.db.collection('users').doc(this.userDetails.uid).snapshotChanges();
     }
@@ -185,8 +267,16 @@ export class AuthService {
         userName: this.userName,
         password: this.password,
         email: this.email
+      }).then(data => {
+        this.db.collection('users').doc(this.userDetails.uid).update({
+          householdID: householdid
+        })
       });
     }
+
+    // setUsersHouseholdID(householdid){
+    //   return this.db.
+    // }
 
     getUserHouseholdID() {
       if(this.isLoggedIn){
@@ -237,6 +327,7 @@ export class AuthService {
             phoneNum: parseInt(value.phoneNum),
             userName: value.userName,
             password: value.password,
+            householdID: '',
             email: value.email
           });
 
