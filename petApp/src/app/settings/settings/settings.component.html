@@ -1,7 +1,7 @@
 <div class="settings-Wrapper">
   <div class="settings-content">
 
-     <form [formGroup]="scheduleForm">
+     <form [formGroup]="scheduleForm" (ngSubmit)="trySettings(registerGroup.value)">
 
 	  <mat-form-field class="temp">
                   <input matInput placeholder="First Name:" formControlName="firstName" value="{{firstN}}">

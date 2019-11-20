@@ -3,9 +3,11 @@
         <div *ngFor="let user of users">
             <mat-card class="pet-card">
                 <mat-card-header>
-                    <mat-card-title class="title">{{user.payload.doc.data().firstName}}</mat-card-title>
+                    <!-- <mat-card-title class="title">{{userIDs.payload.doc.data().firstName | async}}</mat-card-title> -->
+                    <mat-card-title class="title">{{user.get('firstName')}}</mat-card-title>
                 </mat-card-header>
-                <mat-card-content>
+                <mat-card-content class="body">
+                  Phone Number: {{user.get('phoneNum')}}
                 </mat-card-content>
             </mat-card>
             <span flex></span>
@@ -13,10 +15,10 @@
     </div>
     <div class="buttons">
         <button mat-raised-button class="add-button" (click)="openDialog()">
-            <mat-icon>add</mat-icon>Add owner to pet
+            <mat-icon>add</mat-icon>Add owner(coming soon)
         </button>
         <button mat-raised-button class="delete-button" (click)="openSecondDialog()">
-            <mat-icon>delete</mat-icon>Delete owner from pet
+            <mat-icon>delete</mat-icon>Delete owner
         </button>
     </div>
 </div>
