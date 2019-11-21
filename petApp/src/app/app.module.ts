@@ -38,7 +38,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HouseholdComponent } from './register/household/household.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
-import { DeleteOwnerComponent } from './owners/delete-owner/delete-owner.component';
+import { DeleteOwnerComponent } from 'src/app/owners/delete-owner/delete-owner.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import {MatDividerModule} from '@angular/material/divider';
 
@@ -92,7 +92,8 @@ import {MatDividerModule} from '@angular/material/divider';
     EditPetComponent,
     AddNeedsComponent,
     AddNeedsComponent,
-    DeleteOwnerComponent
+    DeleteOwnerComponent,
+    AddOwnerComponent
   ]
 })
 export class AppModule { }

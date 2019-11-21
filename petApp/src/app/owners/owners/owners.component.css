@@ -16,7 +16,7 @@
     /*change color of underline*/
     background-color: black !important;
    }
-   
+
    ::ng-deep.mat-form-field-ripple {
    /*change color of underline when focused*/
    background-color: black !important;;
@@ -42,7 +42,7 @@
     margin-block-start: 0%;
     margin-bottom: 5%;
     margin-top: 5%;
-    
+
   }
 
   .edit-button {
@@ -50,10 +50,10 @@
     min-width: 10%;
     margin-top: 10%;
   }
-  
+
   .card-container{
     display: flex;
-    flex-flow: row wrap; 
+    flex-flow: row wrap;
     justify-content: center
   }
 
@@ -62,7 +62,7 @@
     min-width: 10%;
     margin-top: 10%;
   }
-  
+
   .add-button {
     margin-top: 0.5%;
     float: left;

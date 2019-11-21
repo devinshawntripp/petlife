@@ -33,7 +33,7 @@ background-color: black !important;
 /** Overrides label color **/
 .my-form-field.mat-form-field-appearance-legacy .mat-form-field-label,
 .my-form-field.mat-form-field-appearance-legacy.mat-focused
-	.mat-form-field-label { 
+	.mat-form-field-label {
 	color: black;
 	width: 100%;
 }
@@ -96,4 +96,17 @@ background-color: black !important;
 
 ::placeholder {
 	color: black;
+}
+
+.center {
+	display: flex column;
+}
+
+.houseid {
+	display: flex;
+	justify-content: center;
+}
+.ownerid {
+	display: flex;
+	justify-content: center;
 }

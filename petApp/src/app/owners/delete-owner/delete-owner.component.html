@@ -1,1 +1,19 @@
-<p>delete-owner works!</p>
+<h1 class="title center" mat-dialog-title>Delete Owner</h1>
+<div mat-dialog-content class="dialog">
+  <ul class="collection">
+      <li *ngFor="let user of users; let i=index">
+        <span class="col s11">{{ user.get('firstName') }}</span>
+        <!-- <td>Test: {{userIDs[i]}}</td> -->
+        <button class="delete-button" mat-button class="col s1" (click)="deleteOwnerHousehold(userIDs[i])">x</button>
+      </li>
+  </ul>
+</div>
+
+<div mat-dialog-actions class="buttons center">
+  <button mat-button class="submitButton" type="submit" color="primary">
+    Submit
+  </button>
+  <button mat-button class="cancelButton" (click)="dialogRef.close()">
+    Cancel
+  </button>
+</div>

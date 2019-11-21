@@ -1,1 +1,19 @@
-<p>add-owner works!</p>
+
+
+<h1 clas="title" mat-dialog-title>Add Owner</h1>
+<div mat-dialog-content class="dialog">
+  <form [formGroup]="addOwnerGroup" (ngSubmit)="tryAddingOwner(addOwnerGroup.value)">
+    <mat-form-field class="temp">
+        <input matInput placeholder="OwnerID:" formControlName="ownerid">
+    </mat-form-field>
+
+    <div mat-dialog-actions class="buttons">
+      <button mat-button class ="submitButton" type="submit" color="primary">
+        Submit
+      </button>
+      <button mat-button class ="cancelButton" (click)="dialogRef.close()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

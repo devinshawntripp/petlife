@@ -1,0 +1,24 @@
+.dialog {
+  width: 300px;
+  height: 150px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+
+.collection {
+  list-style-type: none;
+}
+
+.delete-button {
+  width: 30px;
+}
+
+
+button.col.s1.mat-button.mat-button-base {
+
+  width: 50px;
+}

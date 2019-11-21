@@ -21,7 +21,6 @@ export class OwnersComponent implements OnInit {
   name: string
   subscription: Subscription;
   householdid: string;
-  userIDs: DocumentSnapshot<unknown>;
 
   constructor(
     public firebaseService: FirebaseService,
@@ -51,37 +50,12 @@ export class OwnersComponent implements OnInit {
       res.map(snap => {
         console.log("aldjfakldjfakljfdadfjalkdjflk " + snap.payload.doc.id);
         this.authService.getUserDataLast(snap.payload.doc.id).subscribe(result => {
-          this.userIDs = result.payload;
           this.users.push(result.payload);
           console.log("User first name: " + result.payload.get('firstName'));
         })
       })
     });
-    // .then((res) => {
-    //   console.log("skljfaldjfalkdjfalkj " + res.payload.doc.id);
-    // })
-    // .then((cred) => {
-    //   this.userIDs = cred;
-    //   console.log("adkjfaldfja" + cred);
-    //   cred.map((snap) => {
-    //
-    //     console.log(snap.payload.doc.data());
-    //   })
-    // })
-    // .then(result => {
-    //   console.log(result);
-    //   this.userIDs = result;
-      // for(var property in result) {
-      //   alert(property + "=" + result[property]);
-      // }
-      // console.log("here is the data for " + stringify());
   }
-
-  // getUserData(){
-  //   this.userIDs.forEach(function (value) {
-  //     console.log(value.id);
-  //   })
-  // }
 
   getData(){
     this.authService.getUsersFromHousehold(this.householdid)
