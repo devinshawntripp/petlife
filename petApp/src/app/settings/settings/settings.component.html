@@ -1,7 +1,7 @@
 <div class="settings-Wrapper">
   <div class="settings-content">
 
-     <form [formGroup]="scheduleForm" (ngSubmit)="trySettings(registerGroup.value)">
+     <form *ngIf="scheduleForm" [formGroup]="scheduleForm" (ngSubmit)="trySettings(scheduleForm.value)">
 
 	  <mat-form-field class="temp">
                   <input matInput placeholder="First Name:" formControlName="firstName" value="{{firstN}}">
@@ -28,8 +28,12 @@
                   <input matInput placeholder="Phone Number:" formControlName="phoneNum" value="{{phonenum}}">
           </mat-form-field>
 
-
-     <p>    HouseholdID: {{household}}</p>
+     <div class="center">
+       <div class="houseid">HouseholdID: {{household}}</div>
+       <div class="ownerid">OwnerID: {{ownerid}}</div>
+       <br>
+       <div class="ownerid">Use thes keys to join households or to join other households</div>
+     </div>
 
 
 	  <button mat-raised-button class="update-button" type="submit">Update</button>

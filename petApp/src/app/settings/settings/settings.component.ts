@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FirebaseService } from '../../services/firebase.service';
@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class SettingsComponent implements OnInit {
   pass: string = '';
   phonenum: string = '';
   household: string = '';
+  ownerid: string = '';
 
 
 
@@ -47,6 +49,8 @@ export class SettingsComponent implements OnInit {
         this.pass = userData.password;
         this.phonenum = userData.phoneNum;
         this.household = userData.householdID;
+        this.ownerid = this.authService.getUserID();
+        this.createForm();
       }
     )
 
@@ -65,14 +69,7 @@ export class SettingsComponent implements OnInit {
     //   }
 
 
-    this.scheduleForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      password: [''],
-      phoneNum: [''],
-      userName: ['']
-    });
+
 
     // this.authService.getUserID();
     //
@@ -90,12 +87,12 @@ export class SettingsComponent implements OnInit {
 
   createForm() {
     this.scheduleForm = this.fb.group({
-      firstName: [this.item.name],
-      lastName: [this.item.surname],
-      email: [this.item.email],
-      password: [this.item.password],
-      phoneNum: [this.item.phoneNum],
-      userName: [this.item.userName]
+      firstName: [this.firstN],
+      lastName: [this.lastN],
+      email: [this.em],
+      password: [this.pass],
+      phoneNum: [this.phonenum],
+      userName: [this.userN]
     });
   }
 

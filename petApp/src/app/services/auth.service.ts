@@ -158,6 +158,16 @@ export class AuthService {
 
     }
 
+    async addOwner(value){
+      this.getUserHouseholdID().subscribe(
+        (householdid) => {
+          return this.db.collection('households').doc(householdid).collection('owners').doc(value.ownerid).set({
+
+          })
+        }
+      )
+    }
+
     getPetsTwo(id) {
       return this.db.collection('households').doc(id).collection('pets').snapshotChanges();
     }
@@ -166,37 +176,14 @@ export class AuthService {
       return this.db.collection('households').doc(householdid).collection('owners').snapshotChanges();
     }
 
-
-
-    // getUse(household) {
-    //   return this.db.collection('households').doc(householdid).collection('owners');
+    // getOwner(householdid){
+    //   // return this.db.collection('users').doc(snapid).snapshotChanges();
+    //   return this.getOwnsersIDs(householdid).add(cred => {
+    //     return cred.docs.map((snap) => {
+    //       return this.db.collection('users').doc(snap.id).snapshotChanges();
+    //     })
+    //   })
     // }
-    // getOwners(householdid){
-    //   const householdUsersData = this.db.collection('households').doc(householdid).collection('owners');
-    //   const doc = householdUsersData.get();
-    //   return doc.pipe(
-    //     map(d => d.data().)
-    //   )
-    // }
-    getOwner(householdid){
-      // return this.db.collection('users').doc(snapid).snapshotChanges();
-      return this.getOwnsersIDs(householdid).add(cred => {
-        return cred.docs.map((snap) => {
-          return this.db.collection('users').doc(snap.id).snapshotChanges();
-        })
-      })
-    }
-    getOwnersThree(householdid){
-      return new Promise<any>((resolve, reject) => {
-        this.db.collection('households').doc(householdid).collection('owners').snapshotChanges()
-        .subscribe((res) => {
-          return res.map(snap => {
-            resolve(snap);
-            console.log("hello world" + snap.payload.doc.id);
-          })
-        });
-      })
-    }
 
     getOwnersFour(householdid) {
       return this.db.collection('households').doc(householdid).collection('owners').snapshotChanges();
@@ -208,55 +195,9 @@ export class AuthService {
 
 
 
-    getOwnsersIDs(householdid){
-      return this.db.collection('households').doc(householdid).collection('owners').get().subscribe(cred => {
-
-      });
-    }
-
-    // getOwnersIDs(householdid){
-    //   return this.db.collection('households').doc(householdid).collection('owners').get().subscribe(cred => {
-    //     cred.docs.map(snap => {
-    //       return this.db.collection('users').doc(snap.id).snapshotChanges();
-    //     })
-    //   })
-    // }
-
-    getOwners(householdid){
-
-
-      return new Promise<any>((resolve, reject) => {
-        return this.db.collection('households').doc(householdid).collection('owners').get()
-        .subscribe(cred => {
-          return cred.docs.map(snap => {
-
-            return this.db.collection('users').doc(snap.id).snapshotChanges();
-
-            console.log(snap.id)
-          })
-          // return Promise.all(cred.map(snap => {
-          //   console.log(snap.payload.oldIndex.toString());
-          //   this.db.collection('users').doc(snap.payload.doc.data().id);
-          //
-          //
-          // }))
-          // return this.db.collection('users').doc().set({
-          //
-          // });
-
-        })
-      });
-    }
-
-
-
     getUser() {
       return this.db.collection('users').doc(this.userDetails.uid).snapshotChanges();
     }
-
-    // getUserData() {
-    //   return this.db.collection('users').doc(this.user)
-    // }
 
     addUserToHouse(householdid){
       return this.db.collection('households').doc(householdid).collection('owners').doc(this.userDetails.uid).set({
@@ -294,6 +235,31 @@ export class AuthService {
     }
 
 
+    //you can make owner and householdexists in two one function by making two parameters
+    //ex: collectionid, documentid
+    checkExists(collectionid, documentid){
+      return this.db.collection(collectionid).doc(documentid).ref.get()
+      .then(docsnapshot => {
+        if(docsnapshot.exists){
+          return true;
+        } else {
+          return false;
+        }
+      })
+    }
+
+
+
+    ownerExists(ownerid) {
+      return this.db.collection('users').doc(ownerid).ref.get()
+      .then(docsnapshot => {
+        if(docsnapshot.exists){
+          return true;
+        } else {
+          return false;
+        }
+      })
+    }
 
     householdExists(householdid) {
       return this.db.collection('households').doc(householdid).ref.get()
@@ -369,6 +335,17 @@ export class AuthService {
 
     }
 
+
+
+    addHouseholdToOwner(value) {
+      this.getUserHouseholdID().subscribe(
+        (houseid) => {
+          this.db.collection('users').doc(value.ownerid).update({
+            householdID: houseid.id
+          })
+        }
+      )
+    }
     createHousehold(){
 
       return this.db.collection('households').add({
@@ -414,6 +391,10 @@ export class AuthService {
           reject();
         }
       });
+    }
+
+    deleteOwnerFromHousehold(ownerid, householdid){
+      return this.db.collection('households').doc(householdid).collection('owners').doc(ownerid).delete();
     }
 
 

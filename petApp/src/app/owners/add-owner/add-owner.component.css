@@ -1,0 +1,33 @@
+.dialog{
+  width: 300px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons{
+  width: 100%;
+}
+
+.temp {
+  width: 100%;
+}
+
+.submitButton{
+    margin-left: 5%;
+    background-color: blue !important;
+    color: black;
+}
+
+.cancelButton {
+  float: right;
+  margin-left: 20%;
+  background-color: blue !important;
+  color: black;
+}
