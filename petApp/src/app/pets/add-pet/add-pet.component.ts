@@ -45,6 +45,7 @@ export class AddPetComponent implements OnInit{
 
     this.addPetGroup = this.fb.group ({
       name: [''],
+      species: [''],
     });
 
   }

@@ -41,6 +41,8 @@ import { AddOwnerComponent } from './owners/add-owner/add-owner.component';
 import { DeleteOwnerComponent } from 'src/app/owners/delete-owner/delete-owner.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -81,8 +83,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatDividerModule
-
+    MatDividerModule,
+    MatSelectModule,
+    
   ],
   providers: [ FirebaseService, AuthService, AuthGService ],
   bootstrap: [AppComponent],

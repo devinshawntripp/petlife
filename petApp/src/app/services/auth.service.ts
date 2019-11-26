@@ -147,7 +147,8 @@ export class AuthService {
         this.getUserHouseholdID().subscribe(
           (householdid) => {
             return this.db.collection('households').doc(householdid).collection('pets').add({
-              name: value.name
+              name: value.name,
+              species: value.species
             })
           }
         )

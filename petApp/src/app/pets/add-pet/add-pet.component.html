@@ -4,6 +4,18 @@
       <mat-form-field class="form-field">
         <p>Name:</p><input matInput formControlName="name">
       </mat-form-field>
+      <div></div>
+      <mat-form-field class="form-field">
+          <mat-label>Species:</mat-label>
+          <select matNativeControl formControlName="species">
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="fish">Fish</option>
+            <option value="reptile">Reptile</option>
+            <option value="audi">Other</option>
+          </select>
+        </mat-form-field>
     <div mat-dialog-actions class="buttons">
       <button mat-button class ="button" type="submit" color="primary">
         Submit
