@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit{
 
   needs: Array<any>
   pets: Array<any>
+  owners: Array<any>
   completed: boolean
   subscription: Subscription;
   userName: any;
@@ -45,6 +46,7 @@ export class DashboardComponent implements OnInit{
         this.householdid = id;
         this.getNeeds()
         this.getPets()
+        this.getOwners()
         this.getName()
       }
     )
@@ -54,6 +56,14 @@ export class DashboardComponent implements OnInit{
     this.firebaseService.getNeeds()
     .subscribe(result => {
       this.needs = result;
+    })
+   }
+
+   getOwners(){
+    this.authService.getUsersFromHousehold(this.householdid)
+    .subscribe(result => {
+      console.log(result);
+      this.owners = result;
     })
    }
 
