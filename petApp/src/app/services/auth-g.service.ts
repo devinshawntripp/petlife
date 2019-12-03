@@ -12,11 +12,8 @@ export class AuthGService implements CanActivate{
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if ( this.authService.isLoggedIn ) { return true; }
-
-
-
         // console.log(state.root.data.userDetails.uid);
-        this.authService.redirectURL = state.url;
+       this.authService.redirectURL = state.url;
         this.router.navigate(['/login']);
         return false;
     }

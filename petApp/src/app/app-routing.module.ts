@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'household', component: HouseholdComponent, canActivate: [AuthGService] },
   { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGService] },
-  { path: '', redirectTo: '/owners', pathMatch: 'full'}
+  { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
