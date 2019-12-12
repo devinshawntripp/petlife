@@ -10,7 +10,8 @@
   }
 
 .title {
-    justify-content: center
+    justify-content: center;
+    align-content: center;
 }
 
 .toggle {
@@ -20,6 +21,10 @@
     margin-top: 5%;
     
   }
+
+.header {
+  justify-content: center;
+}
 
   .edit-button {
     margin-left: 15%;

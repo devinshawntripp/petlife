@@ -2,8 +2,23 @@
     <div class="card-container">
         <div *ngFor="let item of items">
             <mat-card class="pet-card">
-                <mat-card-header>
+                <mat-card-header class="header">
                     <mat-card-title class="title">{{item.payload.doc.data().name}}</mat-card-title>
+                    <div *ngIf="item.payload.doc.data().species === 'dog'">
+                        <img src="https://static.thenounproject.com/png/151542-200.png" height="30" width="30"><h6>Dog</h6>
+                    </div>
+                    <div *ngIf="item.payload.doc.data().species === 'cat'">
+                        <img src="https://cdn.onlinewebfonts.com/svg/img_438615.png" height="30" width="30"><h6>Cat</h6>
+                    </div>
+                    <div *ngIf="item.payload.doc.data().species === 'rabbit'">
+                            <img src="https://static.thenounproject.com/png/145978-200.png" height="30" width="30"><h6>Rabbit</h6>
+                    </div>
+                    <div *ngIf="item.payload.doc.data().species === 'fish'">
+                            <img src="https://cdn3.iconfinder.com/data/icons/camping-icons/491/Swimming_Fish-512.png" height="30" width="30"><h6>Fish</h6>
+                    </div>
+                    <div *ngIf="item.payload.doc.data().species === 'reptile'">
+                            <img src="https://image.flaticon.com/icons/png/512/47/47371.png" height="30" width="30"><h6>Reptile</h6>
+                    </div>
                 </mat-card-header>
                 <mat-card-content>
                     <div *ngFor="let need of needs">

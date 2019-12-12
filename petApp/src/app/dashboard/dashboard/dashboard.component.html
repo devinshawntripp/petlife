@@ -6,7 +6,7 @@
         <div *ngFor="let pet of pets">
             <p>{{pet.payload.doc.data().name}}:</p>
             <div *ngFor="let need of needs">
-                <li *ngIf="need.payload.doc.data().pet === pet.payload.doc.data().name" class="list">
+                <li *ngIf="need.payload.doc.data().pet === pet.payload.doc.data().name && userName === need.payload.doc.data().owner" class="list">
                     {{need.payload.doc.data().what}} {{need.payload.doc.data().time}}
                     <input type="checkbox" [checked]="need.payload.doc.data().completed"
                         (change)="updateCompletion(need)" />

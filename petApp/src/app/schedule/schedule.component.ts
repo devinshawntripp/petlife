@@ -12,6 +12,7 @@ export class ScheduleComponent implements OnInit {
 
   needs: Array<any>
   owners: Array<any>
+  pets: Array<any>
   completed: boolean
   householdid: string;
 

@@ -43,7 +43,7 @@ export class AddOwnerComponent implements OnInit {
 
         //going to have to use this same user id to add the householdid field to the new owner
         this.authService.addHouseholdToOwner(value);
-        this.router.navigate(['/owners']);
+        this.router.navigate(['/login']);
       })
       this.dialogRef.close();
     }else {
