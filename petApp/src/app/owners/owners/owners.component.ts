@@ -12,7 +12,7 @@ import { DocumentSnapshot } from '@angular/fire/firestore';
 @Component({
   selector: 'app-owners',
   templateUrl: './owners.component.html',
-  styleUrls: ['./owners.component.css']
+  styleUrls: ['./owners.component.css'],
 })
 export class OwnersComponent implements OnInit {
 

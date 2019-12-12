@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 
 import { auth } from 'firebase/app';
@@ -50,7 +50,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    public db: AngularFirestore
+    public db: AngularFirestore,
     ) {
       // firebase.auth().onAuthStateChanged(function(use) {
       //   console.log('reached here');
@@ -74,6 +74,7 @@ export class AuthService {
       this.user.subscribe(
         (user) => {
           if (user) {
+            console.log("some user was logged in");
             this.isLoggedIn.next(true);
             this.userDetails = user;
             console.log(this.userDetails);
@@ -89,7 +90,46 @@ export class AuthService {
 
     }
 
-    // isLoggedIn() {
+
+    canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | boolean {
+      if (this.userDetails != null) {
+        console.log("user logged in");
+        return true;
+
+      }
+      return false;
+      this.router.navigate(['login']);
+
+      // return this.currentUserObservable
+      //      .take(1)
+      //      .map(user => !!user)
+      //      .do(loggedIn => {
+      //        if (!loggedIn) {
+      //          console.log("access denied")
+      //          this.router.navigate(['login']);
+      //        }
+      //    })
+    }
+
+    get currentUserObservable(): any {
+      return this.afAuth.auth
+    }
+
+    get authenticated(): boolean {
+      if(this.afAuth.authState != null){
+        this.afAuth.authState.subscribe(something => {
+          console.log(something.email);
+        })
+        return true;
+      } else {
+        return false;
+      }
+      // return this.afAuth.authState !== null;
+    }
+
+    // loggedIn() {
     //   if (this.userDetails == null) {
     //     return false;
     //   } else {
