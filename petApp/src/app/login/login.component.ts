@@ -53,7 +53,9 @@ export class LoginComponent implements OnInit {
       // this.apComp.username = userObservable.
       // this.apComp.username = this.authService.getUserName()
     }, err => {
+      location.reload();
       console.log(err);
+      this.router.navigate(['/login']);
       this.errorMessage = err.message;
     })
   }
